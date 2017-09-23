@@ -1,6 +1,6 @@
-version = 8
+version = 10
 ScenarioInfo = {
-  map_version=8,
+  map_version=10,
   name = 'Survival Horde EE',
   description = [[Spino-ff of the popular Survival Horde map.
 
@@ -19,9 +19,9 @@ This is an early version with minimal changes. Only air units flying accross the
   starts = true,
   preview = '',
   size = {512, 512},
-  map = '/maps/survival_horde_ee.v0008/survival_horde_ee.scmap',
-  save = '/maps/survival_horde_ee.v0008/survival_horde_ee_save.lua',
-  script = '/maps/survival_horde_ee.v0008/survival_horde_ee_script.lua',
+  map = '/maps/survival_horde_ee.v0010/survival_horde_ee.scmap',
+  save = '/maps/survival_horde_ee.v0010/survival_horde_ee_save.lua',
+  script = '/maps/survival_horde_ee.v0010/survival_horde_ee_script.lua',
   norushradius = 80,
   Configurations = {
     ['standard'] = {
