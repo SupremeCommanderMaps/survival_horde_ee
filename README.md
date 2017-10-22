@@ -4,9 +4,9 @@ A survival map for [Supreme Commander: Forged Alliance Forever][FAF].
 
 ## New in Entropy Edition
 
-### Version 10
+### Version 15
 
-Released on 2017-09-22
+Released on 2017-10-08
 
 * Added Auto Reclaim support
 * Added option to disable the new air waves

@@ -1,6 +1,6 @@
-version = 10
+version = 5
 ScenarioInfo = {
-  map_version=10,
+  map_version=15,
   name = 'Survival Horde EE',
   description = [[Spino-ff of the popular Survival Horde map.
 
@@ -12,16 +12,14 @@ Works with 1-4 player (unoccupied lanes are disabled, resources are spawned acco
 Difficulty: Pretty hard.
 
 Survival Horde is made by Mikzau, EE changes by Entropy Wins.
-
-This is an early version with minimal changes. Only air units flying accross the screen have been added so far :)
 ]],
   type = 'skirmish',
   starts = true,
   preview = '',
   size = {512, 512},
-  map = '/maps/survival_horde_ee.v0010/survival_horde_ee.scmap',
-  save = '/maps/survival_horde_ee.v0010/survival_horde_ee_save.lua',
-  script = '/maps/survival_horde_ee.v0010/survival_horde_ee_script.lua',
+  map = '/maps/survival_horde_ee.v0015/survival_horde_ee.scmap',
+  save = '/maps/survival_horde_ee.v0015/survival_horde_ee_save.lua',
+  script = '/maps/survival_horde_ee.v0015/survival_horde_ee_script.lua',
   norushradius = 80,
   Configurations = {
     ['standard'] = {

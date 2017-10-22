@@ -41,5 +41,5 @@ options =
 			{ text = "200 percent", help = "200 percent", key = 200, },
 			{ text = "over 9000 percent", help = "You know you want it", key = 9001, },
 		},
-	},
+	}
 }
