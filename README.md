@@ -8,7 +8,7 @@ A survival map for [Supreme Commander: Forged Alliance Forever][FAF].
 
 Under development
 
-*
+* Added spawn delay option
 
 ### Version 15
 

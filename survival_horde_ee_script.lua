@@ -2005,15 +2005,16 @@ end
 ForkThread(function()
     local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
 
-    local headerOptions = { color = "ffb4ffd4", duration = 11, location = "leftcenter", size = 35 }
-    local textOptions = { color = "ffb4ffd4", duration = 11, location = "leftcenter" }
+    local headerOptions = { color = "ff001155", duration = 13, location = "leftcenter", size = 35 }
+    local versionOptions = { color = "ff001155", duration = 13, location = "leftcenter" }
+    local textOptions = { color = "ff002288", duration = 13, location = "leftcenter" }
 
     textPrinter.print(string.rep(" ", 12) .. "Welcome to Survival Horde", headerOptions)
+    textPrinter.print(string.rep(" ", 34) .. "Entropy Edition, version 16", versionOptions)
     textPrinter.printBlankLine(textOptions)
-    textPrinter.print(string.rep(" ", 20) .. "Entropy Edition, version 16", textOptions)
     textPrinter.printBlankLine(textOptions)
-    textPrinter.printBlankLine(textOptions)
-    textPrinter.print(string.rep(" ", 20) .. "You will need some extra AA in this version ;)", textOptions)
+    textPrinter.print(string.rep(" ", 20) .. "Enemies spawn in " .. options.getSpawnDelay() .. " seconds", textOptions)
+    textPrinter.print(string.rep(" ", 20) .. "Auto reclaim: " .. options.getAutoReclaimPercentage() .. "%", textOptions)
 end)
 
 local function newAirwingSpawner()
