@@ -529,6 +529,10 @@ local function createSurvivalUnit(blueprint, x, z, y)
         bp.Wreckage = nil
     end
 
+    if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, unit) then
+        unit:SetFuelUseTime(9999)
+    end
+
     return unit
 end
 
@@ -1572,8 +1576,6 @@ Survival_Tick = function(self)
                 local WaveInfo = WaveOrders[i]
 
                 if (WaveInfo[3] == GameTime) then
-                    --LOG("GiveWaveOrders GiveWaveOrders GiveWaveOrders GiveWaveOrders GiveWaveOrders ")
-
                     GiveWaveOrders(i, WaveInfo[1], WaveInfo[2], WaveInfo[4])
                 end
             end
@@ -1985,62 +1987,34 @@ end
 
 
 GiveWaveOrders = function(WaveOrderNumber, WaveID, SpawnPoint, Formation)
-
-    local strSpawnPoint = ""
-    strSpawnPoint = SpawnPoint
-
-    local strFormation = ''
-    strFormation = Formation
-
-
     local WaveInfo = WaveOrders[WaveOrderNumber]
-    local platoon = CreateWaveID(WaveID, strSpawnPoint, strFormation)
+    local platoon = CreateWaveID(WaveID, SpawnPoint, Formation)
 
     if (platoon == nil) then
         return
     end
 
     for i = 0, (table.getn(WaveInfo) - 4 - 3 / 3) do
-
         local r = 3 * i + 4
 
         if (WaveInfo[r + 1] == "IssueAttackFormation") then
-
             GiveAttackOrderFormation(platoon, WaveInfo[r + 2])
-
         elseif (WaveInfo[r + 1] == "GiveAssistOrder") then
-
             GiveAssistOrder(platoon, WaveInfo[r + 2], WaveInfo[r + 3])
-
         elseif (WaveInfo[r + 1] == "LoadUnitsToTransport") then
-
             GiveTransportOrder(platoon, WaveInfo[r + 2], WaveInfo[r + 3])
-
         elseif (WaveInfo[r + 1] == "UnloadTransport") then
-
             UnloadTransport(platoon, WaveInfo[r + 2])
-
         elseif (WaveInfo[r + 1] == "IssueAttack") then
-
             GiveAttackOrder(platoon, WaveInfo[r + 2])
-
         elseif (WaveInfo[r + 1] == "Enhancements") then
-
             BuildEnhancement(platoon, WaveInfo[r + 2])
-
         elseif (WaveInfo[r + 1] == "IssueMove") then
-
             GiveMoveOrder(platoon, WaveInfo[r + 2])
-
         elseif (WaveInfo[r + 1] == "IssueMoveFormation") then
-
             GiveMoveOrderFormation(platoon, WaveInfo[r + 2])
-
         elseif (WaveInfo[r + 1] == "IssueNameChange") then
-
             IssueNameChange(platoon, WaveInfo[r + 2])
-
-        else
         end
     end
 end
@@ -2053,8 +2027,6 @@ end
 
 
 CreateWaveID = function(ID, SpawnPoint, Formation)
-    --LOG("CreateWaveID " .. ID)
-
     local strSpawnPoint = ""
     strSpawnPoint = SpawnPoint
     local strFormation = ''
@@ -2066,20 +2038,18 @@ CreateWaveID = function(ID, SpawnPoint, Formation)
     local POS = GetMarker(SpawnPoint).position
 
     if (WaveTable[ID] == "NULL") then
-        --LOG("CreateWaveID RETURN NIL")
         return nil
     else
         for k = 0, ((table.getn(CurrentWave) - 2 - 1) / 2) do
             local r = 2 * k + 1
 
             for i = 1, CurrentWave[2 + r] do
-                --LOG("CreateWaveID Creating unit")
-                local NewUnit = createSurvivalUnit(CurrentWave[1 + r], POS[1] + (Random(-45, 45) / 10), POS[2], POS[3] + (Random(40, 45) / 15))
-
-
-                if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, NewUnit) then
-                    NewUnit:SetFuelUseTime(9999)
-                end
+                local NewUnit = createSurvivalUnit(
+                    CurrentWave[1 + r],
+                    POS[1] + (Random(-45, 45) / 10),
+                    POS[2],
+                    POS[3] + (Random(40, 45) / 15)
+                )
 
                 NewUnit:EnableIntel('RadarStealth')
                 NewUnit:EnableIntel('Jammer')
@@ -2107,11 +2077,13 @@ CreateUnitGroup = function(Blueprint, SpawnPoint, Quantity) --Used to creating e
     strBluePrint = Blueprint
     local POS = GetMarker(SpawnPoint).position
     for i = 1, Quantity do
-        local NewUnit = createSurvivalUnit(Blueprint, POS[1] + ((Random(-110, 110) / 10)), POS[2], POS[3] + ((Random(-50, 50) / 15)))
+        local NewUnit = createSurvivalUnit(
+            Blueprint,
+            POS[1] + ((Random(-110, 110) / 10)),
+            POS[2],
+            POS[3] + ((Random(-50, 50) / 15))
+        )
 
-        if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, NewUnit) then
-            NewUnit:SetFuelUseTime(9999)
-        end
         NewUnit:EnableIntel('RadarStealth')
         NewUnit:EnableIntel('Jammer')
         NewUnit:EnableIntel('RadarStealthField')
