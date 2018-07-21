@@ -1843,26 +1843,11 @@ end
 
 
 UnloadTransport = function(aiPlatoon, marker)
-
-    IssueTransportUnload(aiPlatoon:GetPlatoonUnits(), ScenarioUtils.MarkerToPosition(marker))
+    IssueTransportUnload(
+        aiPlatoon:GetPlatoonUnits(),
+        ScenarioUtils.MarkerToPosition(marker)
+    )
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 BuildEnhancement = function(aiPlatoon, prebuild)
@@ -1871,18 +1856,13 @@ BuildEnhancement = function(aiPlatoon, prebuild)
         if (unit:BeenDestroyed() == false) then
             if (unit:GetUnitId() == 'url0301') then --Cybran sACU
                 if (prebuild == "CombatantWeak") then
-
                     unit:CreateEnhancement('FocusConvertor')
                     unit:CreateEnhancement('EMPCharge')
-
                 elseif (prebuild == "CombatantMedium") then
-
                     unit:CreateEnhancement('EMPCharge')
                     unit:CreateEnhancement('FocusConvertor')
                     unit:CreateEnhancement('StealthGenerator')
-
                 elseif (prebuild == "CombatantStrong") then
-
                     unit:CreateEnhancement('EMPCharge')
                     unit:CreateEnhancement('FocusConvertor')
                     unit:CreateEnhancement('CloakingGenerator')
@@ -1891,12 +1871,9 @@ BuildEnhancement = function(aiPlatoon, prebuild)
 
                 --Name sACUs
                 if (sACUnameID <= table.getn(sACUnames)) then
-
                     unit:SetCustomName(sACUnames[sACUnameID])
                     sACUnameID = sACUnameID + 1
-
                 elseif (sACUnameID > table.getn(sACUnames)) then
-
                     sACUnameID = 1
                     unit:SetCustomName(sACUnames[sACUnameID])
                     sACUnameID = sACUnameID + 1
@@ -1908,24 +1885,12 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
 IssueNameChange = function(aiPlatoon, UnitID)
-
-    local strUnitID = ''
-    strUnitID = UnitID
     local UnitList = aiPlatoon:GetPlatoonUnits()
 
     for k, unit in UnitList do
         if (unit:BeenDestroyed() == false) then
-            if (unit:GetUnitId() == strUnitID) then
+            if (unit:GetUnitId() == UnitID) then
 
 
                 if (SpecialNamesID <= table.getn(SpecialNames)) then
