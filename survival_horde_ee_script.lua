@@ -2010,7 +2010,7 @@ ForkThread(function()
 
     textPrinter.print(string.rep(" ", 12) .. "Welcome to Survival Horde", headerOptions)
     textPrinter.printBlankLine(textOptions)
-    textPrinter.print(string.rep(" ", 20) .. "Entropy Edition, version 15", textOptions)
+    textPrinter.print(string.rep(" ", 20) .. "Entropy Edition, version 16", textOptions)
     textPrinter.printBlankLine(textOptions)
     textPrinter.printBlankLine(textOptions)
     textPrinter.print(string.rep(" ", 20) .. "You will need some extra AA in this version ;)", textOptions)
