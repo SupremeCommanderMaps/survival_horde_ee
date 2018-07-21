@@ -2085,9 +2085,7 @@ end
 
 
 
-GiveWaveOrders = function(WaveOrderNumber, WaveID, SpawnPoint, Formation)      ------------------------------------------------------------------------------ Creating waves and giving them orders.
-
-    --LOG("GiveWaveOrders " .. WaveID)
+GiveWaveOrders = function(WaveOrderNumber, WaveID, SpawnPoint, Formation)
 
     local strSpawnPoint = ""
     strSpawnPoint = SpawnPoint
@@ -2099,13 +2097,9 @@ GiveWaveOrders = function(WaveOrderNumber, WaveID, SpawnPoint, Formation)      -
     local WaveInfo = WaveOrders[WaveOrderNumber]
     local platoon = CreateWaveID(WaveID, strSpawnPoint, strFormation)
 
-    --LOG("GiveWaveOrders before guard")
-
     if (platoon == nil) then
         return
     end
-
-    --LOG("GiveWaveOrders before loop")
 
     for i = 0, (table.getn(WaveInfo) -4 -3 / 3) do
 
@@ -2159,7 +2153,7 @@ end
 
 
 
----------------------------------------------------------------------------------------------------CREATE WAVES FROM WAVETABLE--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 CreateWaveID = function(ID, SpawnPoint, Formation)
     --LOG("CreateWaveID " .. ID)
 

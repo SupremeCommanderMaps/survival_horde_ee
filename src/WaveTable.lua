@@ -1,6 +1,8 @@
 getWaveTable = function(EnableLane1, EnableLane2, EnableLane3, EnableLane4, EnableLane5)
     return  {
 
+        -- {wave number, blueprint 1, number of units for blueprint 1, optional blueprint 2, ...}
+
         {1, 'url0107', 15 * EnableLane1},
         {2, 'url0107', 15 * EnableLane2},
         {3, 'url0107', 15 * EnableLane3},
