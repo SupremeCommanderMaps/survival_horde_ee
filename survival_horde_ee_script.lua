@@ -1833,7 +1833,6 @@ GiveTransportOrder = function(aiPlatoon, Quantity, techlevel)
         NewUnit:SetProductionPerSecondEnergy(2500)
         NewUnit:SetConsumptionPerSecondEnergy(0)
         NewUnit:SetProductionPerSecondMass(50)
-        NewUnit:SetFuelUseTime(9999)
         table.insert(UnitList, NewUnit)
     end
 
