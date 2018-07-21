@@ -410,7 +410,7 @@ local function ShuffleListPartially(list, startingID, endingID, IgnoreList) --Sh
 
         for i = startingID, endingID do
 
-            if (IgnoreList != nil) then
+            if (IgnoreList ~= nil) then
 
                 for k = 1, table.getn(IgnoreList) do
 
@@ -427,7 +427,7 @@ local function ShuffleListPartially(list, startingID, endingID, IgnoreList) --Sh
 
                 local RandomIndex = Random(i, endingID)
 
-                if (IgnoreList != nil) then
+                if (IgnoreList ~= nil) then
 
 
                     for j = 1, table.getn(IgnoreList) do
@@ -521,7 +521,7 @@ end
 
 
 CreateWaves = function()
-    WaveTable = import('/maps/survival_horde_ee.v0015/src/WaveTable.lua').getWaveTable(
+    WaveTable = import('/maps/survival_horde_ee.v0016/src/WaveTable.lua').getWaveTable(
         EnableLane1,
         EnableLane2,
         EnableLane3,
@@ -534,7 +534,7 @@ CreateWaveTableOrders = function()
     local ValidGunshipTargetsA = table.copy(BaseRaidingTargets)
     ShuffleList(ValidGunshipTargetsA)
 
-    WaveOrders = import('/maps/survival_horde_ee.v0015/src/WaveOrders.lua').getWaveTable(
+    WaveOrders = import('/maps/survival_horde_ee.v0016/src/WaveOrders.lua').getWaveTable(
         WaveDelay,
         ShuffleList,
         ValidGunshipTargetsA
@@ -573,7 +573,7 @@ function OnPopulate()
 
     ScenarioInfo.Options = defaultOptions(ScenarioInfo.Options)
 
---    local survival = import('/maps/survival_horde_ee.v0015/src/Survival.lua').newInstance(
+--    local survival = import('/maps/survival_horde_ee.v0016/src/Survival.lua').newInstance(
 --        ScenarioInfo,
 --        CreateWaves,
 --        CreateWaveTableOrders,
@@ -2239,7 +2239,7 @@ end
 
 
 ForkThread(function()
-    local textPrinter = import('/maps/survival_horde_ee.v0015/src/lib/TextPrinter.lua').newInstance()
+    local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
 
     local headerOptions = {color = "ffb4ffd4", duration = 11, location = "leftcenter", size = 35 }
     local textOptions = {color = "ffb4ffd4", duration = 11, location = "leftcenter" }
@@ -2254,13 +2254,13 @@ end)
 
 local function newAirwingSpawner()
     local mapSizeX, mapSizeY = GetMapSize()
-    return import('/maps/survival_horde_ee.v0015/src/lib/AirwingSpawner.lua').newInstance(mapSizeX, mapSizeY, "ARMY_SURVIVAL_ENEMY")
+    return import('/maps/survival_horde_ee.v0016/src/lib/AirwingSpawner.lua').newInstance(mapSizeX, mapSizeY, "ARMY_SURVIVAL_ENEMY")
 end
 
 ForkThread(function()
-    local textPrinter = import('/maps/survival_horde_ee.v0015/src/lib/TextPrinter.lua').newInstance()
+    local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
     if ScenarioInfo.Options.opt_HordeAirWaves == 1 then
-        local airwings = import('/maps/survival_horde_ee.v0015/src/Airwings.lua').newInstance(
+        local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(
             newAirwingSpawner(),
             textPrinter,
             TotalGameTime
@@ -2273,7 +2273,7 @@ end)
 local function setupAutoReclaim()
     if ScenarioInfo.Options.opt_HordeAutoReclaim > 0 then
         ForkThread(
-            import('/maps/survival_horde_ee.v0015/src/lib/AutoReclaim.lua').AutoResourceThread,
+            import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
             ScenarioInfo.Options.opt_HordeAutoReclaim / 100,
             ScenarioInfo.Options.opt_HordeAutoReclaim / 100
         )
