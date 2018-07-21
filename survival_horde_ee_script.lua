@@ -1980,9 +1980,6 @@ BuildEnhancement = function(aiPlatoon, prebuild)
                     unit:CreateEnhancement('FocusConvertor')
                     unit:CreateEnhancement('CloakingGenerator')
                     unit:EnableIntel('Cloak')
-
-                else
-                    --Do nothing
                 end
 
                 --Name sACUs
