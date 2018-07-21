@@ -4,6 +4,12 @@ A survival map for [Supreme Commander: Forged Alliance Forever][FAF].
 
 ## New in Entropy Edition
 
+### Version 16
+
+Under development
+
+*
+
 ### Version 15
 
 Released on 2017-10-08
