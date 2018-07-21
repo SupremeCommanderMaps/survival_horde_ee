@@ -1819,19 +1819,16 @@ end
 
 
 GiveTransportOrder = function(aiPlatoon, Quantity, techlevel)
-
     local UnitList = {}
     local POS = aiPlatoon:GetPlatoonPosition()
 
-
     for i = 1, Quantity do
-
-        local NewUnit = 0
-        if (techlevel == "Tech1") then
-            NewUnit = createSurvivalUnit('ura0107', POS[1] + ((Random(-50, 50) / 15)), POS[2], POS[3] + ((Random(-50, 50) / 15)))
-        else
-            NewUnit = createSurvivalUnit('ura0104', POS[1] + ((Random(-50, 50) / 15)), POS[2], POS[3] + ((Random(-50, 50) / 15)))
-        end
+        local NewUnit = createSurvivalUnit(
+            techlevel == "Tech1" and 'ura0107' or 'ura0104',
+            POS[1] + ((Random(-50, 50) / 15)),
+            POS[2],
+            POS[3] + ((Random(-50, 50) / 15))
+        )
 
         NewUnit:SetProductionPerSecondEnergy(2500)
         NewUnit:SetConsumptionPerSecondEnergy(0)
