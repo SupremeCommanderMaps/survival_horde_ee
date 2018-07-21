@@ -24,6 +24,12 @@ getWaveTable = function(WaveDelay, ShuffleList, ValidGunshipTargetsA)
 
     return  {
 
+        -- {
+        --  WaveID, SpawnPoint, GameTime, Formation
+        --  order name, order argument 1, order argument 2, etc
+        --  optional second order, argument 1, argument 2, etc
+        -- }
+
         {1,  "Survival_LandSpawn1", 80, 'None',
             "IssueAttackFormation", LandWaypoints1, nil},
 

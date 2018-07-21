@@ -21,87 +21,87 @@ local OccupiedArmies = {}
 
 --LISTING WAYPOINTS FOR UNIT NAVIGATION
 
-local LandCenter = {"PlayerSpawn_1", "PlayerSpawn_2", "PlayerSpawn_3",  "PlayerSpawn_4", "PatrolBase_5", "PatrolBase_6", "PatrolBase_7", "PatrolBase_8", "TransportDrop05"}
-local AllEnemySpawns = {"Survival_LandSpawn1", "Survival_LandSpawn2", "Survival_LandSpawn3", "Survival_LandSpawn4", "Survival_Spawn1", "Survival_Spawn4"}
+local LandCenter = { "PlayerSpawn_1", "PlayerSpawn_2", "PlayerSpawn_3", "PlayerSpawn_4", "PatrolBase_5", "PatrolBase_6", "PatrolBase_7", "PatrolBase_8", "TransportDrop05" }
+local AllEnemySpawns = { "Survival_LandSpawn1", "Survival_LandSpawn2", "Survival_LandSpawn3", "Survival_LandSpawn4", "Survival_Spawn1", "Survival_Spawn4" }
 
 
-local TransportRoute1 = {"TransportPath01", "TransportPath06"} --TransportDrop04
-local TransportRoute2 = {"TransportPath01", "TransportPath06", "TransportPath10", "TransportPath11", "TransportPath18"} --TransportDrop04
-local TransportRoute3 = {"TransportPath01", "TransportPath06", "TransportPath10", "TransportPath11", "TransportPath18", "TransportPath19"} --TransportDrop05
-local TransportRoute4 = {"TransportPath02"} --TransportDrop01
-local TransportRoute5 = {"TransportPath03"} --TransportDrop02
-local TransportRoute6 = {"TransportPath04"} --TransportDrop06
-local TransportRoute7 = {"TransportPath05", "TransportPath07"} --TransportDrop03
-local TransportRoute8 = {"TransportPath05", "TransportPath07", "TransportPath17", "TransportPath16"} --TransportDrop03
-local TransportRoute9 = {"TransportPath05", "TransportPath07", "TransportPath17", "TransportPath16", "TransportPath23"} --TransportDrop05
+local TransportRoute1 = { "TransportPath01", "TransportPath06" } --TransportDrop04
+local TransportRoute2 = { "TransportPath01", "TransportPath06", "TransportPath10", "TransportPath11", "TransportPath18" } --TransportDrop04
+local TransportRoute3 = { "TransportPath01", "TransportPath06", "TransportPath10", "TransportPath11", "TransportPath18", "TransportPath19" } --TransportDrop05
+local TransportRoute4 = { "TransportPath02" } --TransportDrop01
+local TransportRoute5 = { "TransportPath03" } --TransportDrop02
+local TransportRoute6 = { "TransportPath04" } --TransportDrop06
+local TransportRoute7 = { "TransportPath05", "TransportPath07" } --TransportDrop03
+local TransportRoute8 = { "TransportPath05", "TransportPath07", "TransportPath17", "TransportPath16" } --TransportDrop03
+local TransportRoute9 = { "TransportPath05", "TransportPath07", "TransportPath17", "TransportPath16", "TransportPath23" } --TransportDrop05
 
 
 
 --TORPEDO BOMBER ROUTES
-local TorpedoRoute01 = {"TorpedoPatrol01", "TorpedoPatrol02", "TorpedoPatrol03", "TorpedoPatrol04", "TorpedoPatrol05", "TorpedoPatrol06", "TorpedoPatrol07", "TorpedoPatrol08", "TorpedoPatrol09", "TorpedoPatrol10", "TorpedoPatrol11"}
-local TorpedoRoute02 = {"TorpedoPatrol08", "TorpedoPatrol07", "TorpedoPatrol06", "TorpedoPatrol05", "TorpedoPatrol04", "TorpedoPatrol03", "TorpedoPatrol02", "TorpedoPatrol01", "TorpedoPatrol11", "TorpedoPatrol10", "TorpedoPatrol09"}
-local TorpedoRoute03 = {"TorpedoPatrol12", "TorpedoPatrol13", "TorpedoPatrol14", "TorpedoPatrol15", "TorpedoPatrol16", "TorpedoPatrol17", "TorpedoPatrol18", "TorpedoPatrol19", "TorpedoPatrol20", "TorpedoPatrol21", "TorpedoPatrol22", "TorpedoPatrol23", "TorpedoPatrol24"}
-local TorpedoRoute04 = {"TorpedoPatrol19", "TorpedoPatrol18", "TorpedoPatrol17", "TorpedoPatrol16", "TorpedoPatrol15", "TorpedoPatrol14", "TorpedoPatrol13", "TorpedoPatrol12", "TorpedoPatrol24", "TorpedoPatrol23", "TorpedoPatrol22", "TorpedoPatrol21", "TorpedoPatrol20"}
-local TorpedoRoute05 = {"TorpedoPatrol25", "TorpedoPatrol26", "TorpedoPatrol27", "TorpedoPatrol28", "TorpedoPatrol29", "TorpedoPatrol30", "TorpedoPatrol31", "TorpedoPatrol32", "TorpedoPatrol33", "TorpedoPatrol34", "TorpedoPatrol35", "TorpedoPatrol36"}
-local TorpedoRoute06 = {"TorpedoPatrol32", "TorpedoPatrol31", "TorpedoPatrol30", "TorpedoPatrol29", "TorpedoPatrol28", "TorpedoPatrol27", "TorpedoPatrol26", "TorpedoPatrol25", "TorpedoPatrol36", "TorpedoPatrol35", "TorpedoPatrol34", "TorpedoPatrol33"}
-local TorpedoRoute07 = {"TorpedoPatrol37", "TorpedoPatrol38", "TorpedoPatrol39", "TorpedoPatrol40", "TorpedoPatrol41", "TorpedoPatrol42", "TorpedoPatrol43", "TorpedoPatrol44", "TorpedoPatrol45", "TorpedoPatrol46", "TorpedoPatrol47"}
-local TorpedoRoute08 = {"TorpedoPatrol44", "TorpedoPatrol43", "TorpedoPatrol42", "TorpedoPatrol41", "TorpedoPatrol40", "TorpedoPatrol39", "TorpedoPatrol38", "TorpedoPatrol37", "TorpedoPatrol47", "TorpedoPatrol46", "TorpedoPatrol45"}
-local TorpedoRoute09 = {"TorpedoPatrol48", "TorpedoPatrol49", "TorpedoPatrol50", "TorpedoPatrol51", "TorpedoPatrol52", "TorpedoPatrol53", "TorpedoPatrol54", "TorpedoPatrol55", "TorpedoPatrol56"}
-local TorpedoRoute10 = {"TorpedoPatrol54", "TorpedoPatrol53", "TorpedoPatrol52", "TorpedoPatrol51", "TorpedoPatrol50", "TorpedoPatrol49", "TorpedoPatrol48", "TorpedoPatrol56", "TorpedoPatrol55"}
-local AllTorpedoRoutes = {TorpedoRoute01, TorpedoRoute02, TorpedoRoute03, TorpedoRoute04, TorpedoRoute05, TorpedoRoute06, TorpedoRoute07, TorpedoRoute08, TorpedoRoute09, TorpedoRoute10}
+local TorpedoRoute01 = { "TorpedoPatrol01", "TorpedoPatrol02", "TorpedoPatrol03", "TorpedoPatrol04", "TorpedoPatrol05", "TorpedoPatrol06", "TorpedoPatrol07", "TorpedoPatrol08", "TorpedoPatrol09", "TorpedoPatrol10", "TorpedoPatrol11" }
+local TorpedoRoute02 = { "TorpedoPatrol08", "TorpedoPatrol07", "TorpedoPatrol06", "TorpedoPatrol05", "TorpedoPatrol04", "TorpedoPatrol03", "TorpedoPatrol02", "TorpedoPatrol01", "TorpedoPatrol11", "TorpedoPatrol10", "TorpedoPatrol09" }
+local TorpedoRoute03 = { "TorpedoPatrol12", "TorpedoPatrol13", "TorpedoPatrol14", "TorpedoPatrol15", "TorpedoPatrol16", "TorpedoPatrol17", "TorpedoPatrol18", "TorpedoPatrol19", "TorpedoPatrol20", "TorpedoPatrol21", "TorpedoPatrol22", "TorpedoPatrol23", "TorpedoPatrol24" }
+local TorpedoRoute04 = { "TorpedoPatrol19", "TorpedoPatrol18", "TorpedoPatrol17", "TorpedoPatrol16", "TorpedoPatrol15", "TorpedoPatrol14", "TorpedoPatrol13", "TorpedoPatrol12", "TorpedoPatrol24", "TorpedoPatrol23", "TorpedoPatrol22", "TorpedoPatrol21", "TorpedoPatrol20" }
+local TorpedoRoute05 = { "TorpedoPatrol25", "TorpedoPatrol26", "TorpedoPatrol27", "TorpedoPatrol28", "TorpedoPatrol29", "TorpedoPatrol30", "TorpedoPatrol31", "TorpedoPatrol32", "TorpedoPatrol33", "TorpedoPatrol34", "TorpedoPatrol35", "TorpedoPatrol36" }
+local TorpedoRoute06 = { "TorpedoPatrol32", "TorpedoPatrol31", "TorpedoPatrol30", "TorpedoPatrol29", "TorpedoPatrol28", "TorpedoPatrol27", "TorpedoPatrol26", "TorpedoPatrol25", "TorpedoPatrol36", "TorpedoPatrol35", "TorpedoPatrol34", "TorpedoPatrol33" }
+local TorpedoRoute07 = { "TorpedoPatrol37", "TorpedoPatrol38", "TorpedoPatrol39", "TorpedoPatrol40", "TorpedoPatrol41", "TorpedoPatrol42", "TorpedoPatrol43", "TorpedoPatrol44", "TorpedoPatrol45", "TorpedoPatrol46", "TorpedoPatrol47" }
+local TorpedoRoute08 = { "TorpedoPatrol44", "TorpedoPatrol43", "TorpedoPatrol42", "TorpedoPatrol41", "TorpedoPatrol40", "TorpedoPatrol39", "TorpedoPatrol38", "TorpedoPatrol37", "TorpedoPatrol47", "TorpedoPatrol46", "TorpedoPatrol45" }
+local TorpedoRoute09 = { "TorpedoPatrol48", "TorpedoPatrol49", "TorpedoPatrol50", "TorpedoPatrol51", "TorpedoPatrol52", "TorpedoPatrol53", "TorpedoPatrol54", "TorpedoPatrol55", "TorpedoPatrol56" }
+local TorpedoRoute10 = { "TorpedoPatrol54", "TorpedoPatrol53", "TorpedoPatrol52", "TorpedoPatrol51", "TorpedoPatrol50", "TorpedoPatrol49", "TorpedoPatrol48", "TorpedoPatrol56", "TorpedoPatrol55" }
+local AllTorpedoRoutes = { TorpedoRoute01, TorpedoRoute02, TorpedoRoute03, TorpedoRoute04, TorpedoRoute05, TorpedoRoute06, TorpedoRoute07, TorpedoRoute08, TorpedoRoute09, TorpedoRoute10 }
 
 --BOMBER BASE ROUTES
-local BomberBaseRoute01 = {"BomberBasePath01", "BomberBasePath02", "BomberBasePath03", "BomberBasePath04", "BomberBasePath05", "BomberBasePath06", "BomberBasePath07"}
-local BomberBaseRoute02 = {"BomberBasePath06", "BomberBasePath05", "BomberBasePath04", "BomberBasePath03", "BomberBasePath02", "BomberBasePath01", "BomberBasePath08"}
-local BomberBaseRoute03 = {"BomberBasePath09", "BomberBasePath10", "BomberBasePath11", "BomberBasePath12", "BomberBasePath13", "BomberBasePath14", "BomberBasePath15"}
-local BomberBaseRoute04 = {"BomberBasePath14", "BomberBasePath13", "BomberBasePath12", "BomberBasePath11", "BomberBasePath10", "BomberBasePath09", "BomberBasePath16"}
-local BomberBaseRoute05 = {"BomberBasePath17", "BomberBasePath02", "BomberBasePath10", "BomberBasePath18", "BomberBasePath19"}
-local BomberBaseRoute06 = {"BomberBasePath18", "BomberBasePath10", "BomberBasePath02", "BomberBasePath17", "BomberBasePath21"}
-local BomberBaseRoute07 = {"BomberBasePath22", "BomberBasePath23", "BomberBasePath03", "BomberBasePath24", "BomberBasePath11", "BomberBasePath25", "BomberBasePath26", "BomberBasePath27"}
-local BomberBaseRoute08 = {"BomberBasePath26", "BomberBasePath25", "BomberBasePath11", "BomberBasePath24", "BomberBasePath03", "BomberBasePath23", "BomberBasePath22", "BomberBasePath29"}
-local BomberBaseRoute09 = {"BomberBasePath30", "BomberBasePath31", "BomberBasePath32", "BomberBasePath33", "BomberBasePath34", "BomberBasePath35", "BomberBasePath36", "BomberBasePath37", "BomberBasePath38"}
-local BomberBaseRoute10 = {"BomberBasePath37", "BomberBasePath36", "BomberBasePath35", "BomberBasePath34", "BomberBasePath33", "BomberBasePath32", "BomberBasePath31", "BomberBasePath30", "BomberBasePath40"}
-local BomberBaseRoute11 = {"BomberBasePath41", "BomberBasePath42", "BomberBasePath43", "BomberBasePath44", "BomberBasePath34", "BomberBasePath45", "BomberBasePath46", "BomberBasePath47", "BomberBasePath48"}
-local BomberBaseRoute12 = {"BomberBasePath47", "BomberBasePath46", "BomberBasePath45", "BomberBasePath34", "BomberBasePath44", "BomberBasePath43", "BomberBasePath42", "BomberBasePath41", "BomberBasePath50"}
-local BomberBaseRoute13 = {"BomberBasePath51", "BomberBasePath03", "BomberBasePath52", "BomberBasePath53", "BomberBasePath54", "BomberBasePath55", "BomberBasePath56", "BomberBasePath57"}
-local BomberBaseRoute14 = {"BomberBasePath56", "BomberBasePath55", "BomberBasePath54", "BomberBasePath53", "BomberBasePath52", "BomberBasePath03", "BomberBasePath51", "BomberBasePath59"}
-local BomberBaseRoute15 = {"BomberBasePath60", "BomberBasePath11", "BomberBasePath61", "BomberBasePath53", "BomberBasePath62", "BomberBasePath63", "BomberBasePath64", "BomberBasePath65"}
-local BomberBaseRoute16 = {"BomberBasePath64", "BomberBasePath63", "BomberBasePath62", "BomberBasePath53", "BomberBasePath61", "BomberBasePath11", "BomberBasePath60", "BomberBasePath67"}
-local BomberBaseRoute17 = {"BomberBasePath68", "BomberBasePath02", "BomberBasePath69", "BomberBasePath32", "BomberBasePath70", "BomberBasePath71", "BomberBasePath72", "BomberBasePath73"}
-local BomberBaseRoute18 = {"BomberBasePath72", "BomberBasePath71", "BomberBasePath70", "BomberBasePath69", "BomberBasePath02", "BomberBasePath68", "BomberBasePath74"}
-local BomberBaseRoute19 = {"BomberBasePath75", "BomberBasePath10", "BomberBasePath76", "BomberBasePath43", "BomberBasePath77", "BomberBasePath78", "BomberBasePath79", "BomberBasePath80"}
-local BomberBaseRoute20 = {"BomberBasePath79", "BomberBasePath78", "BomberBasePath77", "BomberBasePath43", "BomberBasePath76", "BomberBasePath10", "BomberBasePath75", "BomberBasePath81"}
-local BomberBaseRoute21 = {"BomberBasePath82", "BomberBasePath02", "BomberBasePath24", "BomberBasePath44", "BomberBasePath83", "BomberBasePath84", "BomberBasePath85", "BomberBasePath86"}
-local BomberBaseRoute22 = {"BomberBasePath85", "BomberBasePath84", "BomberBasePath83", "BomberBasePath44", "BomberBasePath24", "BomberBasePath02", "BomberBasePath82", "BomberBasePath87"}
-local BomberBaseRoute23 = {"BomberBasePath88", "BomberBasePath10", "BomberBasePath24", "BomberBasePath33", "BomberBasePath89", "BomberBasePath90", "BomberBasePath91", "BomberBasePath92"}
-local BomberBaseRoute24 = {"BomberBasePath91", "BomberBasePath90", "BomberBasePath89", "BomberBasePath33", "BomberBasePath24", "BomberBasePath10", "BomberBasePath88", "BomberBasePath93"}
-local BomberBaseRoute25 = {"BomberBasePath94", "BomberBasePath03", "BomberBasePath52", "BomberBasePath53", "BomberBasePath95", "BomberBasePath96", "BomberBasePath97", "BomberBasePath98", "BomberBasePath99"}
-local BomberBaseRoute26 = {"BomberBasePath98", "BomberBasePath97", "BomberBasePath96", "BomberBasePath95", "BomberBasePath53", "BomberBasePath52", "BomberBasePath03", "BomberBasePath94", "BomberBasePath101"}
-local BomberBaseRoute27 = {"BomberBasePath102", "BomberBasePath11", "BomberBasePath61", "BomberBasePath53", "BomberBasePath103", "BomberBasePath104", "BomberBasePath105", "BomberBasePath106", "BomberBasePath107"}
-local BomberBaseRoute28 = {"BomberBasePath106", "BomberBasePath105", "BomberBasePath104", "BomberBasePath103", "BomberBasePath53", "BomberBasePath61", "BomberBasePath11", "BomberBasePath102", "BomberBasePath109"}
-local AllBomberBaseRoutes = {BomberBaseRoute01, BomberBaseRoute02, BomberBaseRoute03, BomberBaseRoute04, BomberBaseRoute05, BomberBaseRoute06, BomberBaseRoute07, BomberBaseRoute08, BomberBaseRoute09, BomberBaseRoute10, BomberBaseRoute11, BomberBaseRoute12, BomberBaseRoute13, BomberBaseRoute14, BomberBaseRoute15, BomberBaseRoute16, BomberBaseRoute17, BomberBaseRoute18, BomberBaseRoute19, BomberBaseRoute20, BomberBaseRoute21, BomberBaseRoute22, BomberBaseRoute23, BomberBaseRoute24, BomberBaseRoute25, BomberBaseRoute26, BomberBaseRoute27, BomberBaseRoute28}
+local BomberBaseRoute01 = { "BomberBasePath01", "BomberBasePath02", "BomberBasePath03", "BomberBasePath04", "BomberBasePath05", "BomberBasePath06", "BomberBasePath07" }
+local BomberBaseRoute02 = { "BomberBasePath06", "BomberBasePath05", "BomberBasePath04", "BomberBasePath03", "BomberBasePath02", "BomberBasePath01", "BomberBasePath08" }
+local BomberBaseRoute03 = { "BomberBasePath09", "BomberBasePath10", "BomberBasePath11", "BomberBasePath12", "BomberBasePath13", "BomberBasePath14", "BomberBasePath15" }
+local BomberBaseRoute04 = { "BomberBasePath14", "BomberBasePath13", "BomberBasePath12", "BomberBasePath11", "BomberBasePath10", "BomberBasePath09", "BomberBasePath16" }
+local BomberBaseRoute05 = { "BomberBasePath17", "BomberBasePath02", "BomberBasePath10", "BomberBasePath18", "BomberBasePath19" }
+local BomberBaseRoute06 = { "BomberBasePath18", "BomberBasePath10", "BomberBasePath02", "BomberBasePath17", "BomberBasePath21" }
+local BomberBaseRoute07 = { "BomberBasePath22", "BomberBasePath23", "BomberBasePath03", "BomberBasePath24", "BomberBasePath11", "BomberBasePath25", "BomberBasePath26", "BomberBasePath27" }
+local BomberBaseRoute08 = { "BomberBasePath26", "BomberBasePath25", "BomberBasePath11", "BomberBasePath24", "BomberBasePath03", "BomberBasePath23", "BomberBasePath22", "BomberBasePath29" }
+local BomberBaseRoute09 = { "BomberBasePath30", "BomberBasePath31", "BomberBasePath32", "BomberBasePath33", "BomberBasePath34", "BomberBasePath35", "BomberBasePath36", "BomberBasePath37", "BomberBasePath38" }
+local BomberBaseRoute10 = { "BomberBasePath37", "BomberBasePath36", "BomberBasePath35", "BomberBasePath34", "BomberBasePath33", "BomberBasePath32", "BomberBasePath31", "BomberBasePath30", "BomberBasePath40" }
+local BomberBaseRoute11 = { "BomberBasePath41", "BomberBasePath42", "BomberBasePath43", "BomberBasePath44", "BomberBasePath34", "BomberBasePath45", "BomberBasePath46", "BomberBasePath47", "BomberBasePath48" }
+local BomberBaseRoute12 = { "BomberBasePath47", "BomberBasePath46", "BomberBasePath45", "BomberBasePath34", "BomberBasePath44", "BomberBasePath43", "BomberBasePath42", "BomberBasePath41", "BomberBasePath50" }
+local BomberBaseRoute13 = { "BomberBasePath51", "BomberBasePath03", "BomberBasePath52", "BomberBasePath53", "BomberBasePath54", "BomberBasePath55", "BomberBasePath56", "BomberBasePath57" }
+local BomberBaseRoute14 = { "BomberBasePath56", "BomberBasePath55", "BomberBasePath54", "BomberBasePath53", "BomberBasePath52", "BomberBasePath03", "BomberBasePath51", "BomberBasePath59" }
+local BomberBaseRoute15 = { "BomberBasePath60", "BomberBasePath11", "BomberBasePath61", "BomberBasePath53", "BomberBasePath62", "BomberBasePath63", "BomberBasePath64", "BomberBasePath65" }
+local BomberBaseRoute16 = { "BomberBasePath64", "BomberBasePath63", "BomberBasePath62", "BomberBasePath53", "BomberBasePath61", "BomberBasePath11", "BomberBasePath60", "BomberBasePath67" }
+local BomberBaseRoute17 = { "BomberBasePath68", "BomberBasePath02", "BomberBasePath69", "BomberBasePath32", "BomberBasePath70", "BomberBasePath71", "BomberBasePath72", "BomberBasePath73" }
+local BomberBaseRoute18 = { "BomberBasePath72", "BomberBasePath71", "BomberBasePath70", "BomberBasePath69", "BomberBasePath02", "BomberBasePath68", "BomberBasePath74" }
+local BomberBaseRoute19 = { "BomberBasePath75", "BomberBasePath10", "BomberBasePath76", "BomberBasePath43", "BomberBasePath77", "BomberBasePath78", "BomberBasePath79", "BomberBasePath80" }
+local BomberBaseRoute20 = { "BomberBasePath79", "BomberBasePath78", "BomberBasePath77", "BomberBasePath43", "BomberBasePath76", "BomberBasePath10", "BomberBasePath75", "BomberBasePath81" }
+local BomberBaseRoute21 = { "BomberBasePath82", "BomberBasePath02", "BomberBasePath24", "BomberBasePath44", "BomberBasePath83", "BomberBasePath84", "BomberBasePath85", "BomberBasePath86" }
+local BomberBaseRoute22 = { "BomberBasePath85", "BomberBasePath84", "BomberBasePath83", "BomberBasePath44", "BomberBasePath24", "BomberBasePath02", "BomberBasePath82", "BomberBasePath87" }
+local BomberBaseRoute23 = { "BomberBasePath88", "BomberBasePath10", "BomberBasePath24", "BomberBasePath33", "BomberBasePath89", "BomberBasePath90", "BomberBasePath91", "BomberBasePath92" }
+local BomberBaseRoute24 = { "BomberBasePath91", "BomberBasePath90", "BomberBasePath89", "BomberBasePath33", "BomberBasePath24", "BomberBasePath10", "BomberBasePath88", "BomberBasePath93" }
+local BomberBaseRoute25 = { "BomberBasePath94", "BomberBasePath03", "BomberBasePath52", "BomberBasePath53", "BomberBasePath95", "BomberBasePath96", "BomberBasePath97", "BomberBasePath98", "BomberBasePath99" }
+local BomberBaseRoute26 = { "BomberBasePath98", "BomberBasePath97", "BomberBasePath96", "BomberBasePath95", "BomberBasePath53", "BomberBasePath52", "BomberBasePath03", "BomberBasePath94", "BomberBasePath101" }
+local BomberBaseRoute27 = { "BomberBasePath102", "BomberBasePath11", "BomberBasePath61", "BomberBasePath53", "BomberBasePath103", "BomberBasePath104", "BomberBasePath105", "BomberBasePath106", "BomberBasePath107" }
+local BomberBaseRoute28 = { "BomberBasePath106", "BomberBasePath105", "BomberBasePath104", "BomberBasePath103", "BomberBasePath53", "BomberBasePath61", "BomberBasePath11", "BomberBasePath102", "BomberBasePath109" }
+local AllBomberBaseRoutes = { BomberBaseRoute01, BomberBaseRoute02, BomberBaseRoute03, BomberBaseRoute04, BomberBaseRoute05, BomberBaseRoute06, BomberBaseRoute07, BomberBaseRoute08, BomberBaseRoute09, BomberBaseRoute10, BomberBaseRoute11, BomberBaseRoute12, BomberBaseRoute13, BomberBaseRoute14, BomberBaseRoute15, BomberBaseRoute16, BomberBaseRoute17, BomberBaseRoute18, BomberBaseRoute19, BomberBaseRoute20, BomberBaseRoute21, BomberBaseRoute22, BomberBaseRoute23, BomberBaseRoute24, BomberBaseRoute25, BomberBaseRoute26, BomberBaseRoute27, BomberBaseRoute28 }
 
 --BOMBER ROUTES
-local BomberRoute01 = {"BomberPath01", "BomberPath02", "BomberPath03", "BomberPath04", "BomberPath05", "BomberPath06", "BomberPath07", "BomberPath08", "BomberPath09", "BomberPath10", "BomberPath11"}
-local BomberRoute02 = {"BomberPath08", "BomberPath07", "BomberPath06", "BomberPath05", "BomberPath04", "BomberPath03", "BomberPath02", "BomberPath01", "BomberPath11", "BomberPath10", "BomberPath09"}
-local BomberRoute03 = {"BomberPath12", "BomberPath13", "BomberPath14", "BomberPath15", "BomberPath16", "BomberPath17", "BomberPath18", "BomberPath19", "BomberPath20", "BomberPath21", "BomberPath22"}
-local BomberRoute04 = {"BomberPath19", "BomberPath18", "BomberPath17", "BomberPath16", "BomberPath15", "BomberPath14", "BomberPath13", "BomberPath12", "BomberPath22", "BomberPath21", "BomberPath20"}
-local BomberRoute05 = {"BomberPath23", "BomberPath24", "BomberPath25", "BomberPath26", "BomberPath27", "BomberPath28", "BomberPath29", "BomberPath30"}
-local BomberRoute06 = {"BomberPath28", "BomberPath27", "BomberPath26", "BomberPath25", "BomberPath24", "BomberPath23", "BomberPath30", "BomberPath29"}
-local BomberRoute07 = {"BomberPath31", "BomberPath32", "BomberPath33", "BomberPath34", "BomberPath35", "BomberPath36", "BomberPath37", "BomberPath38"}
-local BomberRoute08 = {"BomberPath36", "BomberPath35", "BomberPath34", "BomberPath33", "BomberPath32", "BomberPath31", "BomberPath38", "BomberPath37"}
-local BomberRoute09 = {"BomberPath39", "BomberPath40", "BomberPath41", "BomberPath42", "BomberPath43", "BomberPath44", "BomberPath45", "BomberPath46", "BomberPath47"}
-local BomberRoute10 = {"BomberPath45", "BomberPath44", "BomberPath43", "BomberPath42", "BomberPath41", "BomberPath40", "BomberPath39", "BomberPath47", "BomberPath46"}
-local BomberRoute11 = {"BomberPath48", "BomberPath49", "BomberPath50", "BomberPath51", "BomberPath52", "BomberPath53", "BomberPath54", "BomberPath55", "BomberPath56"}
-local BomberRoute12 = {"BomberPath54", "BomberPath53", "BomberPath52", "BomberPath51", "BomberPath50", "BomberPath49", "BomberPath48", "BomberPath56", "BomberPath55"}
-local BomberRoute13 = {"BomberPath59", "BomberPath60", "BomberPath61", "BomberPath62", "BomberPath63", "BomberPath57", "BomberPath58"}
-local BomberRoute14 = {"BomberPath62", "BomberPath61", "BomberPath60", "BomberPath59", "BomberPath58", "BomberPath57", "BomberPath63"}
-local AllBomberRoutes = {BomberRoute01, BomberRoute02, BomberRoute03, BomberRoute04, BomberRoute05, BomberRoute06, BomberRoute07, BomberRoute08. BomberRoute09, BomberRoute10, BomberRoute11, BomberRoute12, BomberRoute13, BomberRoute14}
+local BomberRoute01 = { "BomberPath01", "BomberPath02", "BomberPath03", "BomberPath04", "BomberPath05", "BomberPath06", "BomberPath07", "BomberPath08", "BomberPath09", "BomberPath10", "BomberPath11" }
+local BomberRoute02 = { "BomberPath08", "BomberPath07", "BomberPath06", "BomberPath05", "BomberPath04", "BomberPath03", "BomberPath02", "BomberPath01", "BomberPath11", "BomberPath10", "BomberPath09" }
+local BomberRoute03 = { "BomberPath12", "BomberPath13", "BomberPath14", "BomberPath15", "BomberPath16", "BomberPath17", "BomberPath18", "BomberPath19", "BomberPath20", "BomberPath21", "BomberPath22" }
+local BomberRoute04 = { "BomberPath19", "BomberPath18", "BomberPath17", "BomberPath16", "BomberPath15", "BomberPath14", "BomberPath13", "BomberPath12", "BomberPath22", "BomberPath21", "BomberPath20" }
+local BomberRoute05 = { "BomberPath23", "BomberPath24", "BomberPath25", "BomberPath26", "BomberPath27", "BomberPath28", "BomberPath29", "BomberPath30" }
+local BomberRoute06 = { "BomberPath28", "BomberPath27", "BomberPath26", "BomberPath25", "BomberPath24", "BomberPath23", "BomberPath30", "BomberPath29" }
+local BomberRoute07 = { "BomberPath31", "BomberPath32", "BomberPath33", "BomberPath34", "BomberPath35", "BomberPath36", "BomberPath37", "BomberPath38" }
+local BomberRoute08 = { "BomberPath36", "BomberPath35", "BomberPath34", "BomberPath33", "BomberPath32", "BomberPath31", "BomberPath38", "BomberPath37" }
+local BomberRoute09 = { "BomberPath39", "BomberPath40", "BomberPath41", "BomberPath42", "BomberPath43", "BomberPath44", "BomberPath45", "BomberPath46", "BomberPath47" }
+local BomberRoute10 = { "BomberPath45", "BomberPath44", "BomberPath43", "BomberPath42", "BomberPath41", "BomberPath40", "BomberPath39", "BomberPath47", "BomberPath46" }
+local BomberRoute11 = { "BomberPath48", "BomberPath49", "BomberPath50", "BomberPath51", "BomberPath52", "BomberPath53", "BomberPath54", "BomberPath55", "BomberPath56" }
+local BomberRoute12 = { "BomberPath54", "BomberPath53", "BomberPath52", "BomberPath51", "BomberPath50", "BomberPath49", "BomberPath48", "BomberPath56", "BomberPath55" }
+local BomberRoute13 = { "BomberPath59", "BomberPath60", "BomberPath61", "BomberPath62", "BomberPath63", "BomberPath57", "BomberPath58" }
+local BomberRoute14 = { "BomberPath62", "BomberPath61", "BomberPath60", "BomberPath59", "BomberPath58", "BomberPath57", "BomberPath63" }
+local AllBomberRoutes = { BomberRoute01, BomberRoute02, BomberRoute03, BomberRoute04, BomberRoute05, BomberRoute06, BomberRoute07, BomberRoute08.BomberRoute09, BomberRoute10, BomberRoute11, BomberRoute12, BomberRoute13, BomberRoute14 }
 
 --NAMES
-local SpecialNames = {"Ripper", "Judas", "Hellbringer", "Trix", "Bulldog", "Doomer", "Punisher", "Ludvig", "Odyssey", "Little Furball", "Stompy", "Flamer", "Inferno", "The Barbarian", "Barbarossa"}
+local SpecialNames = { "Ripper", "Judas", "Hellbringer", "Trix", "Bulldog", "Doomer", "Punisher", "Ludvig", "Odyssey", "Little Furball", "Stompy", "Flamer", "Inferno", "The Barbarian", "Barbarossa" }
 local SpecialNamesID = 1
-local sACUnames = {"Jackson", "Anders", "Leo", "Max", "Adrik", "Alexei", "Iona", "Ali", "Felix", "Jade", "Anna", "Ellie", "Jacob", "Jill", "Rick", "Adrian", "Geoff", "Peter", "Adam", "Jack", "Thomas", "Neon"}
+local sACUnames = { "Jackson", "Anders", "Leo", "Max", "Adrik", "Alexei", "Iona", "Ali", "Felix", "Jade", "Anna", "Ellie", "Jacob", "Jill", "Rick", "Adrian", "Geoff", "Peter", "Adam", "Jack", "Thomas", "Neon" }
 local sACUnameID = 1
 
 --OTHER
@@ -111,11 +111,11 @@ local GameHasEnded = 0
 local cdrUnitList = {}
 local cdrUnitCount = 0
 local DeathDialogueNumber = 1
-local DeathDialogue = {1, 2, 3, 4, 5 }
+local DeathDialogue = { 1, 2, 3, 4, 5 }
 
 local WaveOrders = {}
 local WaveTable = {}
-local WaveDelay = {0, 60, 120, 180}
+local WaveDelay = { 0, 60, 120, 180 }
 local EnableLane1 = 0
 local EnableLane2 = 0
 local EnableLane3 = 0
@@ -126,7 +126,7 @@ local BaseRaidingTargets = {}
 local ValidTransportDrops = {}
 
 
-function ShuffleList(list)  --Shuffles lists randomly
+function ShuffleList(list) --Shuffles lists randomly
 
 
     local SpawnList = list
@@ -150,8 +150,6 @@ function ShuffleList(list)  --Shuffles lists randomly
 
 
     return SpawnList
-
-
 end
 
 
@@ -162,7 +160,7 @@ ShuffleList(SpecialNames)
 
 
 
-function ScenarioUtils.CommanderWarpDelay(cdrUnit, delay)               --Silly way to disable Warp in effect.
+function ScenarioUtils.CommanderWarpDelay(cdrUnit, delay) --Silly way to disable Warp in effect.
 
     local army = cdrUnit:GetArmy()
     local aiBrain = GetArmyBrain(army)
@@ -173,7 +171,7 @@ function ScenarioUtils.CommanderWarpDelay(cdrUnit, delay)               --Silly 
         cdrUnit:HideBone('Right_Upgrade', true)
         cdrUnit:HideBone('Left_Upgrade', true)
         cdrUnit:HideBone('Back_Upgrade_B01', true)
-        cdrUnit:SetOrientation({0, 1, 0, 0}, true)
+        cdrUnit:SetOrientation({ 0, 1, 0, 0 }, true)
 
     elseif (aiBrain:GetFactionIndex() == 2) then
 
@@ -181,7 +179,7 @@ function ScenarioUtils.CommanderWarpDelay(cdrUnit, delay)               --Silly 
         cdrUnit:HideBone('Back_Upgrade', true)
         cdrUnit:HideBone('Right_Upgrade', true)
         cdrUnit:HideBone('Left_Upgrade', true)
-        cdrUnit:SetOrientation({0, 1, 0, 0}, true)
+        cdrUnit:SetOrientation({ 0, 1, 0, 0 }, true)
 
     elseif (aiBrain:GetFactionIndex() == 3) then
 
@@ -189,7 +187,7 @@ function ScenarioUtils.CommanderWarpDelay(cdrUnit, delay)               --Silly 
         cdrUnit:HideBone('Back_Upgrade', true)
         cdrUnit:HideBone('Right_Upgrade', true)
         cdrUnit:HideBone('Back_Upgrade', true)
-        cdrUnit:SetOrientation({0, 1, 0, 0}, true)
+        cdrUnit:SetOrientation({ 0, 1, 0, 0 }, true)
 
     elseif (aiBrain:GetFactionIndex() == 4) then
 
@@ -197,7 +195,7 @@ function ScenarioUtils.CommanderWarpDelay(cdrUnit, delay)               --Silly 
         cdrUnit:HideBone('Back_Upgrade', true)
         cdrUnit:HideBone('Right_Upgrade', true)
         cdrUnit:HideBone('Left_Upgrade', true)
-        cdrUnit:SetOrientation({0, 1, 0, 0}, true)
+        cdrUnit:SetOrientation({ 0, 1, 0, 0 }, true)
     else
         WaitSeconds(delay)
         cdrUnit:PlayCommanderWarpInEffect()
@@ -219,54 +217,39 @@ function ScenarioUtils.CreateResources()
         if (army == "ARMY_5") then
             ChangeResourcePosition = true
         end
-
     end
 
     if (ChangeResourcePosition) then
 
         -- create the resource
-        CreateResourceDeposit("Hydrocarbon",	251.5, 22.49, 340.5, 3.00)
+        CreateResourceDeposit("Hydrocarbon", 251.5, 22.49, 340.5, 3.00)
         -- create the resource graphic on the map
-        CreatePropHPR("/env/common/props/hydrocarbonDeposit01_prop.bp", 251.5, 22.49, 340.5, Random(0,6.2832), 0, 0)
+        CreatePropHPR("/env/common/props/hydrocarbonDeposit01_prop.bp", 251.5, 22.49, 340.5, Random(0, 6.2832), 0, 0)
         -- create the resource icon on the map
-        CreateSplat(
-            {251.5, 22.49, 340.5},           -- Position
-            0,                          -- Heading (rotation)
-            "/env/common/splats/hydrocarbon_marker.dds",                     -- Texture name for albedo
-            6, 6,                     -- SizeX/Z
-            200,                        -- LOD
-            0,                          -- Duration (0 == does not expire)
-            -1,                         -- army (-1 == not owned by any single army)
-            0							-- ???
-        )
+        CreateSplat({ 251.5, 22.49, 340.5 }, -- Position
+            0, -- Heading (rotation)
+            "/env/common/splats/hydrocarbon_marker.dds", -- Texture name for albedo
+            6, 6, -- SizeX/Z
+            200, -- LOD
+            0, -- Duration (0 == does not expire)
+            -1, -- army (-1 == not owned by any single army)
+            0 -- ???)
 
 
         -- create the resource
-        CreateResourceDeposit("Mass",	247.5 + 1.00, 22.48, 364.5 + 1.00, 1.00)
-        CreatePropHPR("/env/common/props/massDeposit01_prop.bp", 247.5, 22.48, 364.5, Random(0,360), 0, 0)
-        CreateResourceDeposit("Mass",	247.5 + 1.00, 22.48, 364.5 - 1.00, 1.00)
-        CreateResourceDeposit("Mass",	247.5 - 1.00, 22.48, 364.5 + 1.00, 1.00)
-        CreateResourceDeposit("Mass",	247.5 - 1.00, 22.48, 364.5 - 1.00, 1.00)
-        CreateSplat(
-            {247.5, 22.48, 364.5},           -- Position
-            0,                          -- Heading (rotation)
-            "/env/common/splats/mass_marker.dds",                     -- Texture name for albedo
-            4, 4,                     -- SizeX/Z
-            100,                        -- LOD
-            0,                          -- Duration (0 == does not expire)
-            -1,                         -- army (-1 == not owned by any single army)
-            0							-- ???
-        )
-
-
-
-
-
-
-
-
-
-
+        CreateResourceDeposit("Mass", 247.5 + 1.00, 22.48, 364.5 + 1.00, 1.00)
+        CreatePropHPR("/env/common/props/massDeposit01_prop.bp", 247.5, 22.48, 364.5, Random(0, 360), 0, 0)
+        CreateResourceDeposit("Mass", 247.5 + 1.00, 22.48, 364.5 - 1.00, 1.00)
+        CreateResourceDeposit("Mass", 247.5 - 1.00, 22.48, 364.5 + 1.00, 1.00)
+        CreateResourceDeposit("Mass", 247.5 - 1.00, 22.48, 364.5 - 1.00, 1.00)
+        CreateSplat({ 247.5, 22.48, 364.5 }, -- Position
+            0, -- Heading (rotation)
+            "/env/common/splats/mass_marker.dds", -- Texture name for albedo
+            4, 4, -- SizeX/Z
+            100, -- LOD
+            0, -- Duration (0 == does not expire)
+            -1, -- army (-1 == not owned by any single army)
+            0 -- ???)
     end
 
     for i, tblData in pairs(markers) do
@@ -294,7 +277,6 @@ function ScenarioUtils.CreateResources()
                 elseif (army == "ARMY_5" and tblData.army5resource) then
                     spawnresource = true
                 end
-
             end
         end
 
@@ -302,21 +284,21 @@ function ScenarioUtils.CreateResources()
 
 
         if (tblData.resource and tblData.Hydrocarbon4 == true and ChangeResourcePosition) then
-            NewResourcePosition = {tblData.position[1] + 3.00, tblData.position[2], tblData.position[3] -3.00}
+            NewResourcePosition = { tblData.position[1] + 3.00, tblData.position[2], tblData.position[3] - 3.00 }
         elseif (tblData.resource and tblData.Hydrocarbon3 == true and ChangeResourcePosition) then
-            NewResourcePosition = {tblData.position[1] - 3.00, tblData.position[2], tblData.position[3] + 3.00}
+            NewResourcePosition = { tblData.position[1] - 3.00, tblData.position[2], tblData.position[3] + 3.00 }
         elseif (tblData.resource and tblData.Hydrocarbon2 == true and ChangeResourcePosition) then
-            NewResourcePosition = {tblData.position[1] + 3.00, tblData.position[2], tblData.position[3] + 3.00}
+            NewResourcePosition = { tblData.position[1] + 3.00, tblData.position[2], tblData.position[3] + 3.00 }
         elseif (tblData.resource and tblData.Hydrocarbon1 == true and ChangeResourcePosition) then
-            NewResourcePosition = {tblData.position[1] - 3.00, tblData.position[2], tblData.position[3] - 3.00}
+            NewResourcePosition = { tblData.position[1] - 3.00, tblData.position[2], tblData.position[3] - 3.00 }
         elseif (tblData.resource and tblData.Mass23 == true and ChangeResourcePosition) then
             posx = -14.00
             posz = -2.00
-            NewResourcePosition = {tblData.position[1] +posx, tblData.position[2], tblData.position[3] +posz}
+            NewResourcePosition = { tblData.position[1] + posx, tblData.position[2], tblData.position[3] + posz }
         elseif (tblData.resource and tblData.Mass22 == true and ChangeResourcePosition) then
             posx = 5.50
             posz = 0.00
-            NewResourcePosition = {tblData.position[1] + posx, tblData.position[2], tblData.position[3] +posz}
+            NewResourcePosition = { tblData.position[1] + posx, tblData.position[2], tblData.position[3] + posz }
         else
             NewResourcePosition = tblData.position
         end
@@ -342,20 +324,18 @@ function ScenarioUtils.CreateResources()
             end
 
             -- create the resource
-            CreateResourceDeposit(tblData.type,	NewResourcePosition[1], NewResourcePosition[2], NewResourcePosition[3], tblData.size)
+            CreateResourceDeposit(tblData.type, NewResourcePosition[1], NewResourcePosition[2], NewResourcePosition[3], tblData.size)
             -- create the resource graphic on the map
-            CreatePropHPR(bp, NewResourcePosition[1], NewResourcePosition[2], NewResourcePosition[3], Random(0,6.2832), 0, 0)
+            CreatePropHPR(bp, NewResourcePosition[1], NewResourcePosition[2], NewResourcePosition[3], Random(0, 6.2832), 0, 0)
             -- create the resource icon on the map
-            CreateSplat(
-                NewResourcePosition,        -- Position
-                0,                          -- Heading (rotation)
-                albedo,                     -- Texture name for albedo
-                sx, sz,                     -- SizeX/Z
-                lod,                        -- LOD
-                0,                          -- Duration (0 == does not expire)
-                -1,                         -- army (-1 == not owned by any single army)
-                0							-- ???
-            )
+            CreateSplat(NewResourcePosition, -- Position
+                0, -- Heading (rotation)
+                albedo, -- Texture name for albedo
+                sx, sz, -- SizeX/Z
+                lod, -- LOD
+                0, -- Duration (0 == does not expire)
+                -1, -- army (-1 == not owned by any single army)
+                0 -- ???)
 
         elseif (spawnresource and tblData.BigMass) then
             local bp, albedo, sx, sz, lod
@@ -376,21 +356,19 @@ function ScenarioUtils.CreateResources()
                 lod = 200
                 variation = 3.00
             end
-            CreateResourceDeposit(tblData.type,	tblData.position[1] + variation + posx, tblData.position[2], tblData.position[3] + variation +posz, tblData.size)
-            CreatePropHPR(bp, tblData.position[1] + posx, tblData.position[2], tblData.position[3] + posz, Random(0,360), 0, 0)
-            CreateResourceDeposit(tblData.type,	tblData.position[1] + posx + variation, tblData.position[2], tblData.position[3] + posz - variation, tblData.size)
-            CreateResourceDeposit(tblData.type,	tblData.position[1] + posx - variation, tblData.position[2], tblData.position[3] +posz + variation, tblData.size)
-            CreateResourceDeposit(tblData.type,	tblData.position[1] +posx - variation, tblData.position[2], tblData.position[3] +posz - variation, tblData.size)
-            CreateSplat(
-                NewResourcePosition,        -- Position
-                0,                          -- Heading (rotation)
-                albedo,                     -- Texture name for albedo
-                sx, sz,                     -- SizeX/Z
-                lod,                        -- LOD
-                0,                          -- Duration (0 == does not expire)
-                -1,                         -- army (-1 == not owned by any single army)
-                0							-- ???
-            )
+            CreateResourceDeposit(tblData.type, tblData.position[1] + variation + posx, tblData.position[2], tblData.position[3] + variation + posz, tblData.size)
+            CreatePropHPR(bp, tblData.position[1] + posx, tblData.position[2], tblData.position[3] + posz, Random(0, 360), 0, 0)
+            CreateResourceDeposit(tblData.type, tblData.position[1] + posx + variation, tblData.position[2], tblData.position[3] + posz - variation, tblData.size)
+            CreateResourceDeposit(tblData.type, tblData.position[1] + posx - variation, tblData.position[2], tblData.position[3] + posz + variation, tblData.size)
+            CreateResourceDeposit(tblData.type, tblData.position[1] + posx - variation, tblData.position[2], tblData.position[3] + posz - variation, tblData.size)
+            CreateSplat(NewResourcePosition, -- Position
+                0, -- Heading (rotation)
+                albedo, -- Texture name for albedo
+                sx, sz, -- SizeX/Z
+                lod, -- LOD
+                0, -- Duration (0 == does not expire)
+                -1, -- army (-1 == not owned by any single army)
+                0 -- ???)
         end
     end
 end
@@ -417,10 +395,8 @@ local function ShuffleListPartially(list, startingID, endingID, IgnoreList) --Sh
                     if (i == IgnoreList[k]) then
 
                         DoNothing = 1
-
                     end
                 end
-
             end
 
             if (DoNothing == 0) then
@@ -436,11 +412,8 @@ local function ShuffleListPartially(list, startingID, endingID, IgnoreList) --Sh
 
                             RandomIndex = Random(i, endingID)
                             j = 1
-
                         end
-
                     end
-
                 end
 
 
@@ -449,15 +422,12 @@ local function ShuffleListPartially(list, startingID, endingID, IgnoreList) --Sh
 
                 SpawnList[i] = str2
                 SpawnList[RandomIndex] = str1
-
             end
 
             DoNothing = 0
-
         end
 
         return SpawnList
-
     end
 end
 
@@ -465,12 +435,11 @@ local CheckFocusArmy = function()
 
     if (GetFocusArmy() < 1) then
 
-        SimObjects.GetFocusArmy = function()      -- <<<<< Fix to spectating not working. GetFocusArmy must never be < 1
+        SimObjects.GetFocusArmy = function() -- <<<<< Fix to spectating not working. GetFocusArmy must never be < 1
 
             local aiBrain = GetArmyBrain(OccupiedArmies[1])
 
             return (aiBrain:GetArmyIndex())
-
         end
     end
 end
@@ -491,28 +460,24 @@ StartMission1 = function()
     end
 
 
-    ScenarioInfo.M1P1 = Objectives.Protect(
-        'primary',
+    ScenarioInfo.M1P1 = Objectives.Protect('primary',
         'incomplete',
         "Hold The Line",
         Desc,
-        {Units = cdrUnitList,
+        {
+            Units = cdrUnitList,
             Timer = nil,
             NumRequired = HowManyMustSurvive,
             MarkUnits = false,
-        }
-    )
+        })
 
-    ScenarioInfo.M1P1:AddResultCallback(
-        function(result)
-            if(result == false) then
-                ForkThread(OnPlayerDefeat)
-            end
+    ScenarioInfo.M1P1:AddResultCallback(function(result)
+        if (result == false) then
+            ForkThread(OnPlayerDefeat)
         end
-    )
+    end)
 
     --LOG("StartMission1 - e")
-
 end
 
 
@@ -521,24 +486,20 @@ end
 
 
 CreateWaves = function()
-    WaveTable = import('/maps/survival_horde_ee.v0016/src/WaveTable.lua').getWaveTable(
-        EnableLane1,
+    WaveTable = import('/maps/survival_horde_ee.v0016/src/WaveTable.lua').getWaveTable(EnableLane1,
         EnableLane2,
         EnableLane3,
         EnableLane4,
-        EnableLane5
-    )
+        EnableLane5)
 end
 
 CreateWaveTableOrders = function()
     local ValidGunshipTargetsA = table.copy(BaseRaidingTargets)
     ShuffleList(ValidGunshipTargetsA)
 
-    WaveOrders = import('/maps/survival_horde_ee.v0016/src/WaveOrders.lua').getWaveTable(
-        WaveDelay,
+    WaveOrders = import('/maps/survival_horde_ee.v0016/src/WaveOrders.lua').getWaveTable(WaveDelay,
         ShuffleList,
-        ValidGunshipTargetsA
-    )
+        ValidGunshipTargetsA)
 end
 
 function defaultOptions(scenarioOptions)
@@ -573,23 +534,23 @@ function OnPopulate()
 
     ScenarioInfo.Options = defaultOptions(ScenarioInfo.Options)
 
---    local survival = import('/maps/survival_horde_ee.v0016/src/Survival.lua').newInstance(
---        ScenarioInfo,
---        CreateWaves,
---        CreateWaveTableOrders,
---        WaveTable,
---        EnableLane1,
---        EnableLane2,
---        EnableLane3,
---        EnableLane4,
---        EnableLane5,
---        OccupiedArmies,
---        BaseRaidingTargets,
---        ValidTransportDrops,
---        IgnoredLanesList,
---        cdrUnitCount,
---        cdrUnitList
---    )
+    --    local survival = import('/maps/survival_horde_ee.v0016/src/Survival.lua').newInstance(
+    --        ScenarioInfo,
+    --        CreateWaves,
+    --        CreateWaveTableOrders,
+    --        WaveTable,
+    --        EnableLane1,
+    --        EnableLane2,
+    --        EnableLane3,
+    --        EnableLane4,
+    --        EnableLane5,
+    --        OccupiedArmies,
+    --        BaseRaidingTargets,
+    --        ValidTransportDrops,
+    --        IgnoredLanesList,
+    --        cdrUnitCount,
+    --        cdrUnitList
+    --    )
 
     local init = function()
 
@@ -608,9 +569,9 @@ function OnPopulate()
         SetIgnoreArmyUnitCap('ARMY_SURVIVAL_ENEMY', true)
 
 
-        ------------------------------------------------------------------------------------------When there's less than 4 players, spawn additional commanders on empty slots-------------------------------------------------------------------------------
+        ------------------------------------------------------------------------------------------ When there's less than 4 players, spawn additional commanders on empty slots-------------------------------------------------------------------------------
         local UnoccupiedArmies = {}
-        local AllArmies = {"ARMY_1", "ARMY_2", "ARMY_3", "ARMY_4", "ARMY_5"}
+        local AllArmies = { "ARMY_1", "ARMY_2", "ARMY_3", "ARMY_4", "ARMY_5" }
 
 
 
@@ -679,14 +640,12 @@ function OnPopulate()
                         table.insert(ValidTransportDrops, "TransportDrop04")
                         table.insert(ValidTransportDrops, "TransportDrop05")
                     end
-
                 end
             end
 
             if (IsListed == 0) then
 
                 table.insert(UnoccupiedArmies, army)
-
             end
         end
 
@@ -705,7 +664,7 @@ function OnPopulate()
         table.insert(BaseRaidingTargets, "PatrolBase_6")
 
 
-        -----------------------------Spawn Destroyer Boss to random, occupied lane
+        ----------------------------- Spawn Destroyer Boss to random, occupied lane
         if (EnableLane1 == 0) then
             table.insert(IgnoredLanesList, 161)
             table.insert(IgnoredLanesList, 162)
@@ -749,15 +708,15 @@ function OnPopulate()
 
 
     if (EnableLane1 == 1) then
-        WaveTable[161] = {161, 'urs0201', 1 + EnableLane5}
-    elseif  (EnableLane2 == 1) then
-        WaveTable[163] = {163, 'urs0201', 1 + EnableLane5}
-    elseif  (EnableLane3 == 1) then
-        WaveTable[166] = {166, 'urs0201', 1 + EnableLane5}
-    elseif  (EnableLane4 == 1) then
-        WaveTable[173] = {173, 'urs0201', 1 + EnableLane5}
-    elseif  (EnableLane5 == 1) then
-        WaveTable[169] = {169, 'urs0201', 1 + EnableLane5}
+        WaveTable[161] = { 161, 'urs0201', 1 + EnableLane5 }
+    elseif (EnableLane2 == 1) then
+        WaveTable[163] = { 163, 'urs0201', 1 + EnableLane5 }
+    elseif (EnableLane3 == 1) then
+        WaveTable[166] = { 166, 'urs0201', 1 + EnableLane5 }
+    elseif (EnableLane4 == 1) then
+        WaveTable[173] = { 173, 'urs0201', 1 + EnableLane5 }
+    elseif (EnableLane5 == 1) then
+        WaveTable[169] = { 169, 'urs0201', 1 + EnableLane5 }
     end
 
 
@@ -855,19 +814,19 @@ function OnPopulate()
 
     CheckFocusArmy()
 
-    for i, army in ListArmies() do           -------------------------------------------------------------------------------- Set player alliances and army options
+    for i, army in ListArmies() do -------------------------------------------------------------------------------- Set player alliances and army options
 
 
         if (army == "ARMY_1" or army == "ARMY_2" or army == "ARMY_3" or army == "ARMY_4" or army == "ARMY_5") then
 
-            local coms = GetArmyBrain(army):GetListOfUnits(categories.COMMAND , false, false)
+            local coms = GetArmyBrain(army):GetListOfUnits(categories.COMMAND, false, false)
             for i, com in coms do
                 table.insert(cdrUnitList, com)
             end
 
 
 
-            ScenarioFramework.AddRestriction(army, categories.WALL)  -- don't allow them to build walls
+            ScenarioFramework.AddRestriction(army, categories.WALL) -- don't allow them to build walls
 
             for x, armyX in ListArmies() do
                 -- if human army
@@ -879,13 +838,11 @@ function OnPopulate()
             SetAlliance(army, "ARMY_SURVIVAL_ENEMY", 'Enemy')
 
             SetAlliedVictory(army, true)
-
-
         end
     end
 
     cdrUnitCount = table.getn(cdrUnitList)
-    Sync.CampaignMode = true				-- Enables campaign UI. Note that spectator mode doesn't work with campaign mode enabled unless you know how to fix it.
+    Sync.CampaignMode = true -- Enables campaign UI. Note that spectator mode doesn't work with campaign mode enabled unless you know how to fix it.
 
     StartMission1()
 end
@@ -896,7 +853,6 @@ end
 function OnStart(self)
 
     ForkThread(Survival_Tick)
-
 end
 
 
@@ -915,26 +871,21 @@ end
 
 StartMission2 = function()
 
-    ScenarioInfo.M1P2 = Objectives.Timer(
-        'primary',
+    ScenarioInfo.M1P2 = Objectives.Timer('primary',
         'incomplete',
         "Survive Untill Recalled",
         "Survive until HQ can recall your ACU.",
-        {Timer = 600,
+        {
+            Timer = 600,
             ExpireResult = 'complete',
-        }
-    )
+        })
 
-    ScenarioInfo.M1P2:AddResultCallback(
-        function(result)
-            if(result) then
-                --LOG("Timer ran out. Victory here.")
-                OnPlayerVictory()
-            end
+    ScenarioInfo.M1P2:AddResultCallback(function(result)
+        if (result) then
+            --LOG("Timer ran out. Victory here.")
+            OnPlayerVictory()
         end
-    )
-
-
+    end)
 end
 
 
@@ -947,60 +898,55 @@ StartSecondaryMission1 = function()
 
     if (table.getn(UnitList) > 0) then
 
-        ScenarioInfo.M1S1 = Objectives.KillOrCapture(
-            'secondary',
+        ScenarioInfo.M1S1 = Objectives.KillOrCapture('secondary',
             'incomplete',
             "Destroy Missile Submarines",
             "Destroy Strategic Missile Submarines before they can build and launch a nuke. Nukes will launch at 35 minute mark.",
-            {Units = UnitList,
+            {
+                Units = UnitList,
                 NumRequired = table.getn(UnitList),
                 MarkUnits = false,
                 ShowProgress = true,
-            }
-        )
+            })
 
-        ScenarioInfo.M1S1:AddResultCallback(
-            function(result)
-                if(result == false) then
-                    --LOG("Issuing a nuclear launch. Beep boop.")
-                    -----------------------------------------------------NUKE LAUNCHING SCRIPT-------------------------------------------------------------------------------------------------------------------------------------------------------------
-                    UnitList = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.NUKESUB, false, false)
-                    local NukeTargetUnits = {}
-                    local PotentialNukeTargetUnits = {}
+        ScenarioInfo.M1S1:AddResultCallback(function(result)
+            if (result == false) then
+                --LOG("Issuing a nuclear launch. Beep boop.")
+                ----------------------------------------------------- NUKE LAUNCHING SCRIPT-------------------------------------------------------------------------------------------------------------------------------------------------------------
+                UnitList = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.NUKESUB, false, false)
+                local NukeTargetUnits = {}
+                local PotentialNukeTargetUnits = {}
+                for x, army in ListArmies() do
+                    if (army == "ARMY_1" or army == "ARMY_2" or army == "ARMY_3" or army == "ARMY_4" or army == "ARMY_5") then
+                        PotentialNukeTargetUnits = GetArmyBrain(army):GetListOfUnits(categories.TECH3 - categories.MOBILE - categories.INDIRECTFIRE - categories.DIRECTFIRE - categories.SHIELD - categories.SILO, false, false) --Target t3 pgens, t3 mexes, t3 factories.
+                        for k, unit in PotentialNukeTargetUnits do
+                            table.insert(NukeTargetUnits, unit)
+                        end
+                    end
+                end
+                if (table.getn(NukeTargetUnits) == 0) then
                     for x, army in ListArmies() do
                         if (army == "ARMY_1" or army == "ARMY_2" or army == "ARMY_3" or army == "ARMY_4" or army == "ARMY_5") then
-                            PotentialNukeTargetUnits = GetArmyBrain(army):GetListOfUnits(categories.TECH3 - categories.MOBILE - categories.INDIRECTFIRE - categories.DIRECTFIRE - categories.SHIELD - categories.SILO, false, false)  --Target t3 pgens, t3 mexes, t3 factories.
+                            PotentialNukeTargetUnits = GetArmyBrain(army):GetListOfUnits(categories.COMMAND, false, false) --If no other targets found, target commanders
                             for k, unit in PotentialNukeTargetUnits do
                                 table.insert(NukeTargetUnits, unit)
                             end
                         end
                     end
-                    if (table.getn(NukeTargetUnits) == 0) then
-                        for x, army in ListArmies() do
-                            if (army == "ARMY_1" or army == "ARMY_2" or army == "ARMY_3" or army == "ARMY_4" or army == "ARMY_5") then
-                                PotentialNukeTargetUnits = GetArmyBrain(army):GetListOfUnits(categories.COMMAND, false, false)          --If no other targets found, target commanders
-                                for k, unit in PotentialNukeTargetUnits do
-                                    table.insert(NukeTargetUnits, unit)
-                                end
-                            end
-                        end
-                    end
-
-                    if (table.getn(NukeTargetUnits) > 0) then
-                        NukeTargetUnits = ShuffleList(NukeTargetUnits)
-                        IssueStrategicMissile(UnitList, NukeTargetUnits)
-                    end
-                    ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
                 end
+
+                if (table.getn(NukeTargetUnits) > 0) then
+                    NukeTargetUnits = ShuffleList(NukeTargetUnits)
+                    IssueStrategicMissile(UnitList, NukeTargetUnits)
+                end
+                ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             end
-        )
+        end)
 
     else
         --LOG("No nukesubs found, not running secondary objective")
         DontStartNukeObjective = 1
     end
-
 end
 
 
@@ -1031,9 +977,9 @@ OnPlayerVictory = function()
         end
 
         WaitSeconds(TeleportDelay + 3.0)
-        IssueClearCommands(GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits( categories.ALLUNITS , false, false))
-        ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_270, nil, true)  --"You made it!"
-        ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').TAUNT33, nil, true)  --Sera Taunt4
+        IssueClearCommands(GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.ALLUNITS, false, false))
+        ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_270, nil, true) --"You made it!"
+        ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').TAUNT33, nil, true) --Sera Taunt4
         WaitSeconds(4.0)
 
         for k, army in ListArmies() do
@@ -1044,7 +990,6 @@ OnPlayerVictory = function()
 
         WaitSeconds(10.0)
         EndGame()
-
     end
 end
 
@@ -1056,9 +1001,8 @@ function FakeCommanderTeleport(com, delay)
     com:SetDoNotTarget(true)
     com:SetCanBeKilled(false)
     WaitSeconds(delay)
-    ScenarioFramework.FakeGateInUnit(com)  --This effect is the best one.
+    ScenarioFramework.FakeGateInUnit(com) --This effect is the best one.
     com:Destroy()
-
 end
 
 
@@ -1104,7 +1048,7 @@ OnPlayerDefeat = function()
             end
         end
 
-        IssueClearCommands(GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits( categories.ALLUNITS , false, false))
+        IssueClearCommands(GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.ALLUNITS, false, false))
         WaitSeconds(4.0)
 
 
@@ -1117,7 +1061,6 @@ OnPlayerDefeat = function()
         WaitSeconds(10.0)
         EndGame()
     end
-
 end
 
 local TotalGameTime = 2400
@@ -1134,7 +1077,7 @@ Survival_Tick = function(self)
     local cdrRaidingDelay = 0
     local HasAirExperimental = 0
 
-    local OncePerTick =  math.floor(GetGameTimeSeconds())
+    local OncePerTick = math.floor(GetGameTimeSeconds())
 
 
     if Time == nil then
@@ -1154,43 +1097,43 @@ Survival_Tick = function(self)
 
         if (OncePerTick < GameTime) then
 
-            ----------------------------------------------------------------------DIALOGUE--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            ---------------------------------------------------------------------- DIALOGUE--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             if (GameTime == 15) then --"Both QAI and HEX are operating in this area" --At the beginning
                 ScenarioFramework.Dialogue(import('/maps/X1CA_005/X1CA_005_strings.lua').X05_M01_011, nil, true)
             end
 
             if (GameTime == 90) then --"Enemy Units Converging to your position." --Around first waves
-                ScenarioFramework.Dialogue(import('/maps/X1CA_002/X1CA_002_strings.lua').X02_M02_090, nil, true)  --X02_M02_090
+                ScenarioFramework.Dialogue(import('/maps/X1CA_002/X1CA_002_strings.lua').X02_M02_090, nil, true) --X02_M02_090
             end
 
             if (GameTime == 1170) then
-                ScenarioFramework.Dialogue(import('/maps/X1CA_002/X1CA_002_strings.lua').TAUNT25, nil, true)  --QAI taunt around 19:30 min mark
+                ScenarioFramework.Dialogue(import('/maps/X1CA_002/X1CA_002_strings.lua').TAUNT25, nil, true) --QAI taunt around 19:30 min mark
             end
 
-            if (GameTime == 1320) then             --Nuke Sub Mission 1320
+            if (GameTime == 1320) then --Nuke Sub Mission 1320
                 StartSecondaryMission1()
             end
 
-            if (GameTime == 1800) then             --Survive Until Recalled
+            if (GameTime == 1800) then --Survive Until Recalled
                 StartMission2()
             end
 
             if (GameTime == 1860) then
-                ScenarioFramework.Dialogue(import('/maps/X1CA_005/X1CA_005_strings.lua').TAUNT11, nil, true)  --QAI taunt aroun 31 min mark
+                ScenarioFramework.Dialogue(import('/maps/X1CA_005/X1CA_005_strings.lua').TAUNT11, nil, true) --QAI taunt aroun 31 min mark
             end
 
-            if (GameTime == 2070) then  --"Seraphim taunt1"
-                ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').TAUNT30, nil, true)  --Sera Taunt1 34:30 min mark
+            if (GameTime == 2070) then --"Seraphim taunt1"
+                ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').TAUNT30, nil, true) --Sera Taunt1 34:30 min mark
             end
 
-            if (GameTime == 2100) then        ----------------------------------------Nukes launching at 35 min 2100
+            if (GameTime == 2100) then ---------------------------------------- Nukes launching at 35 min 2100
                 if (DontStartNukeObjective == 0) then
                     ScenarioInfo.M1S1:ManualResult(false)
                 end
             end
 
-            if (GameTime == 2405) then  --"Wait until extraction." --When the countdown begins
+            if (GameTime == 2405) then --"Wait until extraction." --When the countdown begins
                 ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_020, nil, true)
             end
 
@@ -1198,12 +1141,12 @@ Survival_Tick = function(self)
 
             local aiBrain = GetArmyBrain("ARMY_SURVIVAL_ENEMY")
 
-            -------------------------------------------------------LAND UNIT IDLE PREVENTER!-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            ------------------------------------------------------- LAND UNIT IDLE PREVENTER!-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             local IdleUnitListLand = {}
-            local UnitListLand = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits( categories.LAND + categories.DESTROYER - categories.COMMAND, true, false)
+            local UnitListLand = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.LAND + categories.DESTROYER - categories.COMMAND, true, false)
             local aiBrainLand = GetArmyBrain("ARMY_SURVIVAL_ENEMY")
-            local aiPlatoonLand = aiBrainLand:MakePlatoon('','')
+            local aiPlatoonLand = aiBrainLand:MakePlatoon('', '')
 
 
             for k, IdleUnit in UnitListLand do
@@ -1211,7 +1154,6 @@ Survival_Tick = function(self)
                 if (IdleUnit:IsIdleState()) then
                     table.insert(IdleUnitListLand, IdleUnit)
                 end
-
             end
 
 
@@ -1219,21 +1161,20 @@ Survival_Tick = function(self)
 
                 aiBrainLand:AssignUnitsToPlatoon(aiPlatoonLand, IdleUnitListLand, 'Attack', 'None')
 
-                aiPlatoonLand:AggressiveMoveToLocation(ScenarioUtils.MarkerToPosition((ShuffleList(LandCenter))[1])) 			---- Needs to be aggressive move so they will stop to shoot things
+                aiPlatoonLand:AggressiveMoveToLocation(ScenarioUtils.MarkerToPosition((ShuffleList(LandCenter))[1])) --- - Needs to be aggressive move so they will stop to shoot things
                 aiPlatoonLand:AggressiveMoveToLocation(ScenarioUtils.MarkerToPosition(LandCenter[2]))
                 aiPlatoonLand:AggressiveMoveToLocation(ScenarioUtils.MarkerToPosition(LandCenter[3]))
                 aiPlatoonLand:DisbandOnIdle()
-
             end
 
 
-            ------------------------------------------------------------TORPEDO BOMBER IDLE PREVENTER!---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            ------------------------------------------------------------ TORPEDO BOMBER IDLE PREVENTER!---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
             local RandomTorpedoRoute = Random(1, table.getn(AllTorpedoRoutes))
             local IdleUnitListTorpedo = {}
             local aiBrain = GetArmyBrain("ARMY_SURVIVAL_ENEMY")
             local UnitListTorpedo = aiBrain:GetListOfUnits(categories.ANTINAVY - categories.LAND - categories.NAVAL - categories.STRUCTURE, false, false)
-            local aiPlatoonTorpedo = aiBrain:MakePlatoon('','')
+            local aiPlatoonTorpedo = aiBrain:MakePlatoon('', '')
             aiPlatoonTorpedo:DisbandOnIdle()
 
             for k, IdleUnit in UnitListTorpedo do
@@ -1241,7 +1182,6 @@ Survival_Tick = function(self)
                 if (IdleUnit:IsIdleState()) then
                     table.insert(IdleUnitListTorpedo, IdleUnit)
                 end
-
             end
 
             if (table.getn(IdleUnitListTorpedo) > 0) then
@@ -1254,7 +1194,7 @@ Survival_Tick = function(self)
             end
 
 
-            ------------------------------------------------------------BOMBER, GUNSHIP, SCOUT AND FIGHTER IDLE PREVENTER!---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            ------------------------------------------------------------ BOMBER, GUNSHIP, SCOUT AND FIGHTER IDLE PREVENTER!---------------------------------------------------------------------------------------------------------------------------------------------------------------------
             local RandomBomberRoute = 0
             local RandomRoutePicker = 0
 
@@ -1272,7 +1212,6 @@ Survival_Tick = function(self)
             elseif (cdrRaiding == 0) then
 
                 RandomRoutePicker = 2
-
             end
 
             if (RandomRoutePicker == 1) then
@@ -1282,22 +1221,20 @@ Survival_Tick = function(self)
             elseif (RandomRoutePicker == 2) then
 
                 RandomBomberRoute = Random(1, table.getn(AllBomberBaseRoutes))
-
             end
 
 
             -- - categories.ANTIAIR
             local IdleUnitListBomber = {}
             local UnitListBomber = (aiBrain:GetListOfUnits(categories.AIR - categories.UEF - categories.TRANSPORTATION - categories.ANTINAVY + categories.GROUNDATTACK, false, false))
-            local aiPlatoonBomber = aiBrain:MakePlatoon('','')
+            local aiPlatoonBomber = aiBrain:MakePlatoon('', '')
             aiPlatoonBomber:DisbandOnIdle()
 
             for k, IdleUnit in UnitListBomber do
 
-                if (IdleUnit:IsIdleState() and IdleUnit:GetBlueprint() ~= "dra0202" ) then
+                if (IdleUnit:IsIdleState() and IdleUnit:GetBlueprint() ~= "dra0202") then
                     table.insert(IdleUnitListBomber, IdleUnit)
                 end
-
             end
 
             if (table.getn(IdleUnitListBomber) > 0) then
@@ -1314,7 +1251,6 @@ Survival_Tick = function(self)
                     for i = 1, table.getn(AllBomberBaseRoutes[RandomBomberRoute]) do
                         aiPlatoonBomber:AggressiveMoveToLocation(ScenarioUtils.MarkerToPosition(AllBomberBaseRoutes[RandomBomberRoute][i]))
                     end
-
                 end
                 aiPlatoonBomber:DisbandOnIdle()
             end
@@ -1323,15 +1259,15 @@ Survival_Tick = function(self)
 
 
             ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            ----------------------------------------------------------TRANSPORT UNIT IDLE PREVENTER!------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            ---------------------------------------------------------- TRANSPORT UNIT IDLE PREVENTER!------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-            local IdleUnitListTransport = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.TRANSPORTATION , true, false)
+            local IdleUnitListTransport = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.TRANSPORTATION, true, false)
 
             for i, unit in IdleUnitListTransport do
 
 
                 local TransportPOS = unit:GetPosition()
-                local MarkerPOS = ScenarioUtils.MarkerToPosition('Survival_LandSpawn2')                                         ---------Sends used transports to a kill box
+                local MarkerPOS = ScenarioUtils.MarkerToPosition('Survival_LandSpawn2') --------- Sends used transports to a kill box
                 local dist = VDist2(TransportPOS[1], TransportPOS[3], MarkerPOS[1], MarkerPOS[3])
 
 
@@ -1339,12 +1275,11 @@ Survival_Tick = function(self)
 
 
                     unit:Destroy()
-
                 end
             end
 
             local aiBrainTransport = GetArmyBrain("ARMY_SURVIVAL_ENEMY")
-            local aiPlatoonTransport = aiBrainTransport:MakePlatoon('','')
+            local aiPlatoonTransport = aiBrainTransport:MakePlatoon('', '')
             local RandomTransportRoute = Random(1, 2)
             aiBrainTransport:AssignUnitsToPlatoon(aiPlatoonTransport, IdleUnitListTransport, 'Attack', 'None')
             ShuffleList(ValidTransportDrops)
@@ -1460,7 +1395,7 @@ Survival_Tick = function(self)
 
             else
             end
-            IssueMove(aiPlatoonTransport:GetPlatoonUnits(), ScenarioUtils.MarkerToPosition('Survival_LandSpawn2'))  --Transporter KillBox
+            IssueMove(aiPlatoonTransport:GetPlatoonUnits(), ScenarioUtils.MarkerToPosition('Survival_LandSpawn2')) --Transporter KillBox
 
             -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1476,10 +1411,10 @@ Survival_Tick = function(self)
 
                 if (army == "ARMY_1" or army == "ARMY_2" or army == "ARMY_3" or army == "ARMY_4" or army == "ARMY_5") then
 
-                    local coms = GetArmyBrain(army):GetListOfUnits(categories.COMMAND , false, false)
-                    local navyT2 = GetArmyBrain(army):GetListOfUnits(categories.NAVAL - categories.TECH3 - categories.TECH1 - categories.EXPERIMENTAL , false, true)  --Has Tech2 Naval
-                    local navyT3 = GetArmyBrain(army):GetListOfUnits(categories.NAVAL - categories.TECH1 - categories.TECH2 , false, true)  --Has Tech3 Naval
-                    local AirT4 = GetArmyBrain(army):GetListOfUnits(categories.EXPERIMENTAL - categories.LAND - categories.NAVAL - categories.STRUCTURE , false, true)
+                    local coms = GetArmyBrain(army):GetListOfUnits(categories.COMMAND, false, false)
+                    local navyT2 = GetArmyBrain(army):GetListOfUnits(categories.NAVAL - categories.TECH3 - categories.TECH1 - categories.EXPERIMENTAL, false, true) --Has Tech2 Naval
+                    local navyT3 = GetArmyBrain(army):GetListOfUnits(categories.NAVAL - categories.TECH1 - categories.TECH2, false, true) --Has Tech3 Naval
+                    local AirT4 = GetArmyBrain(army):GetListOfUnits(categories.EXPERIMENTAL - categories.LAND - categories.NAVAL - categories.STRUCTURE, false, true)
 
                     if (table.getn(coms) == 0) then
 
@@ -1497,7 +1432,6 @@ Survival_Tick = function(self)
                             if (cdrPOS[2] < 20) then --checks if commander is underwater
 
                                 cdrUnderwater = 2
-
                             end
 
                             if (cdrDist > 150 and cdrPOS[2] >= 20) then --checks if commander is far away from the middle
@@ -1505,26 +1439,25 @@ Survival_Tick = function(self)
                                 AtLeastOneACURaiding = 1
                                 --LOG("ACU is raiding.")
 
-                            elseif (EnableLane1 == 0 and cdrDistLane1 < 45 and  cdrPOS[2] >= 20) then
+                            elseif (EnableLane1 == 0 and cdrDistLane1 < 45 and cdrPOS[2] >= 20) then
 
                                 AtLeastOneACURaiding = 1
                                 --LOG("ACU is raiding.")
 
-                            elseif (EnableLane2 == 0 and cdrDistLane2 < 45 and  cdrPOS[2] >= 20) then
+                            elseif (EnableLane2 == 0 and cdrDistLane2 < 45 and cdrPOS[2] >= 20) then
 
                                 AtLeastOneACURaiding = 1
                                 --LOG("ACU is raiding.")
 
-                            elseif (EnableLane3 == 0 and cdrDistLane3 < 60 and  cdrPOS[2] >= 20) then
+                            elseif (EnableLane3 == 0 and cdrDistLane3 < 60 and cdrPOS[2] >= 20) then
 
                                 AtLeastOneACURaiding = 1
                                 --LOG("ACU is raiding.")
 
-                            elseif (EnableLane4 == 0 and cdrDistLane4 < 50 and  cdrPOS[2] >= 20) then
+                            elseif (EnableLane4 == 0 and cdrDistLane4 < 50 and cdrPOS[2] >= 20) then
 
                                 AtLeastOneACURaiding = 1
                                 --LOG("ACU is raiding.")
-
                             end
                             --if (com:IsIdleState()) then
                             --LOG("Commander is idling")
@@ -1537,21 +1470,17 @@ Survival_Tick = function(self)
                     if (table.getn(navyT2) > 0) then
 
                         HasT2Navy = 1
-
                     end
 
                     if (table.getn(navyT3) > 0) then
 
                         HasT3Navy = 1
-
                     end
 
                     if (table.getn(AirT4) > 0) then
 
                         HasAirExperimental = 1
-
                     end
-
                 end
             end
 
@@ -1566,33 +1495,28 @@ Survival_Tick = function(self)
 
                     cdrRaiding = 4
                     cdrRaidingDelay = 0
-
                 end
 
             else
 
                 cdrRaidingDelay = 0
                 --LOG("Raiding Delay was reset to 0.")
-
             end
 
             if (cdrRaidingDelay >= 150) then
 
                 cdrRaiding = 4
                 --LOG("Anti-Raiding waves spawned.")
-
             end
 
             if (HasT2Navy == 1) then
 
                 cdrUnderwater = cdrUnderwater + 1
-
             end
 
             if (HasT3Navy == 1) then
 
                 cdrUnderwater = cdrUnderwater + 1
-
             end
 
 
@@ -1638,8 +1562,8 @@ Survival_Tick = function(self)
 
 
 
-            ----------------------------------------------------------------------------------SPAWN UNIT WAVES---------------------------------------------------------------------------------------------------------------------------------------
-            --LOG("GameTime " .. GameTime)
+            ---------------------------------------------------------------------------------- SPAWN UNIT WAVES---------------------------------------------------------------------------------------------------------------------------------------
+            -- LOG("GameTime " .. GameTime)
 
             for i = 1, table.getn(WaveOrders) do
                 local WaveInfo = WaveOrders[i]
@@ -1649,20 +1573,19 @@ Survival_Tick = function(self)
 
                     GiveWaveOrders(i, WaveInfo[1], WaveInfo[2], WaveInfo[4])
                 end
-
             end
 
             ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-            ----------------------------------------------------------------------------------SPAWN AIR SUPPORT---------------------------------------------------------------------------------------------------------------------------------------
+            ---------------------------------------------------------------------------------- SPAWN AIR SUPPORT---------------------------------------------------------------------------------------------------------------------------------------
 
             --Air unit counts grow linearly as GameTime increases
 
-            local NumOfInterceptors = math.floor((10 + (EnableLane1 * 3) + (EnableLane2 * 3) + (EnableLane3 * 3) + (EnableLane4 * 3) + (EnableLane5 * 10))  * GameTime/1500) --Max 30 interceptors, 960 sec max
+            local NumOfInterceptors = math.floor((10 + (EnableLane1 * 3) + (EnableLane2 * 3) + (EnableLane3 * 3) + (EnableLane4 * 3) + (EnableLane5 * 10)) * GameTime / 1500) --Max 30 interceptors, 960 sec max
             local UnitListInterceptors = aiBrain:GetListOfUnits(categories.ANTIAIR - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH2 - categories.TECH3, false, false)
-            local NumOfASF = math.floor((((14 + (EnableLane1 * 3) + (EnableLane2 * 3) + (EnableLane3 * 3) + (EnableLane4 * 3) + (EnableLane5 * 9)) * (GameTime) * (HasAirExperimental + 1))/(2 * (TotalGameTime - 150)))-5)
+            local NumOfASF = math.floor((((14 + (EnableLane1 * 3) + (EnableLane2 * 3) + (EnableLane3 * 3) + (EnableLane4 * 3) + (EnableLane5 * 9)) * (GameTime) * (HasAirExperimental + 1)) / (2 * (TotalGameTime - 150))) - 5)
             local UnitListASF = aiBrain:GetListOfUnits(categories.ANTIAIR - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH1 - categories.TECH2, false, false)
 
             local NumOfT1Bombers = math.floor(((14 + (EnableLane1 * 4) + (EnableLane2 * 4) + (EnableLane3 * 4) + (EnableLane4 * 4) + (EnableLane5 * 15)) * (cdrRaiding + cdrUnderwater + 4) * GameTime) / (1080 * 12))
@@ -1670,17 +1593,17 @@ Survival_Tick = function(self)
             local NumOfT3Bombers = math.floor(((12 * (cdrRaiding + cdrUnderwater + (EnableLane5 * 2)) * GameTime) / ((TotalGameTime - 150) * 10)))
             local UnitListT3Bombers = (aiBrain:GetListOfUnits(categories.BOMBER - categories.ANTINAVY - categories.EXPERIMENTAL - categories.TECH1 - categories.TECH2, false, false))
 
-            local NumOfT1Gunships = math.floor((12 * GameTime * cdrRaiding)  / (960 * 4))
+            local NumOfT1Gunships = math.floor((12 * GameTime * cdrRaiding) / (960 * 4))
             local UnitListT1Gunships = aiBrain:GetListOfUnits(categories.GROUNDATTACK - categories.TRANSPORTATION - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH2 - categories.TECH3, false, false)
-            local NumOfT2Gunships = math.floor(((28 * cdrRaiding * GameTime) / (1740 * 4))-12)
+            local NumOfT2Gunships = math.floor(((28 * cdrRaiding * GameTime) / (1740 * 4)) - 12)
             local UnitListT2Gunships = aiBrain:GetListOfUnits(categories.GROUNDATTACK - categories.TRANSPORTATION - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH1 - categories.TECH3, false, false)
-            local NumOfT3Gunships = math.floor(((35 * cdrRaiding * GameTime) / ((TotalGameTime - 150)*4) - 20))
+            local NumOfT3Gunships = math.floor(((35 * cdrRaiding * GameTime) / ((TotalGameTime - 150) * 4) - 20))
             local UnitListT3Gunships = aiBrain:GetListOfUnits(categories.GROUNDATTACK - categories.TRANSPORTATION - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH1 - categories.TECH2, false, false)
 
             local NumOfTorpedoBombers = math.floor(((70 * cdrUnderwater * GameTime) / ((TotalGameTime - 150) * 4)) - 10)
             local UnitListTorpedoBombers = aiBrain:GetListOfUnits(categories.ANTINAVY - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL, false, false)
 
-            local NumOfT1Scouts = math.floor((10 + (EnableLane5 * 8)) * GameTime  / 1380)
+            local NumOfT1Scouts = math.floor((10 + (EnableLane5 * 8)) * GameTime / 1380)
             local UnitListT1Scouts = aiBrain:GetListOfUnits(categories.INTELLIGENCE - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH2 - categories.TECH3, false, false)
             local NumOfT3Scouts = math.floor(((20 + (EnableLane5 * 5)) * (cdrUnderwater + 4) * GameTime / (8 * (TotalGameTime - 150)) - 5))
             local UnitListT3Scouts = aiBrain:GetListOfUnits(categories.INTELLIGENCE - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH1 - categories.TECH2, false, false)
@@ -1699,11 +1622,11 @@ Survival_Tick = function(self)
 
             --Spawn Bombers
             if (GameTime >= 240 and GameTime <= 900) then
-                if (table.getn(UnitListT1Bombers) <= math.floor(NumOfT1Bombers * 1/2)) then
+                if (table.getn(UnitListT1Bombers) <= math.floor(NumOfT1Bombers * 1 / 2)) then
                     CreateUnitGroup('ura0103', (ShuffleList(AllEnemySpawns))[1], NumOfT1Bombers - table.getn(UnitListT1Bombers))
                 end
             elseif (GameTime >= 1680 - (EnableLane5 * 180)) then
-                if (table.getn(UnitListT3Bombers) <= math.floor(NumOfT3Bombers * 1/2)) then
+                if (table.getn(UnitListT3Bombers) <= math.floor(NumOfT3Bombers * 1 / 2)) then
                     CreateUnitGroup('ura0304', (ShuffleList(AllEnemySpawns))[1], NumOfT3Bombers - table.getn(UnitListT3Bombers))
                 end
             end
@@ -1727,7 +1650,7 @@ Survival_Tick = function(self)
 
             --Spawn Torpedo Bombers
             if (GameTime >= 780) then
-                if (table.getn(UnitListT3Bombers) <= math.floor(NumOfT3Bombers * 2/3)) then
+                if (table.getn(UnitListT3Bombers) <= math.floor(NumOfT3Bombers * 2 / 3)) then
                     CreateUnitGroup('ura0204', (ShuffleList(AllEnemySpawns))[1], NumOfTorpedoBombers - table.getn(UnitListTorpedoBombers))
                 end
             end
@@ -1747,9 +1670,9 @@ Survival_Tick = function(self)
 
 
 
-            -----------------------------------------------------------------------------------GAME ENDING COUNTDOWN--------------------------------------------------------------------
+            ----------------------------------------------------------------------------------- GAME ENDING COUNTDOWN--------------------------------------------------------------------
             if (GameHasEnded == 0 and math.floor(TotalGameTime - GameTime) == 10) then
-                ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_250, nil, true)  --"Almost there..."
+                ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_250, nil, true) --"Almost there..."
             end
 
 
@@ -1770,14 +1693,11 @@ Survival_Tick = function(self)
             end
 
             -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
         end
 
         OncePerTick = GameTime
 
-        WaitSeconds(0.25)      --"Tick Rate" of this while loop
-
+        WaitSeconds(0.25) --"Tick Rate" of this while loop
     end
 end
 
@@ -1798,8 +1718,6 @@ function GetMarker(MarkerName)
 
 
     return Scenario.MasterChain._MASTERCHAIN_.Markers[MarkerName] --Get markers by their name
-
-
 end
 
 
@@ -1815,8 +1733,6 @@ GiveAttackOrderFormation = function(aiPlatoon, MarkerList)
     for i, marker in MarkerList do
         aiPlatoon:AggressiveMoveToLocation(ScenarioUtils.MarkerToPosition(marker))
     end
-
-
 end
 
 
@@ -1827,8 +1743,6 @@ GiveMoveOrderFormation = function(aiPlatoon, MarkerList)
     for i, marker in MarkerList do
         aiPlatoon:MoveToLocation(ScenarioUtils.MarkerToPosition(marker), false)
     end
-
-
 end
 
 
@@ -1840,7 +1754,6 @@ GiveAttackOrder = function(aiPlatoon, MarkerList)
     for i, marker in MarkerList do
         IssueAggressiveMove((aiPlatoon:GetPlatoonUnits()), ScenarioUtils.MarkerToPosition(marker), 'GrowthFormation', 10)
     end
-
 end
 
 
@@ -1859,12 +1772,9 @@ GiveMoveOrder = function(aiPlatoon, MarkerList) --Need this because platoon:Move
 
             local POS = ScenarioUtils.MarkerToPosition(marker)
 
-            IssueMove({unit}, {POS[1] + RandomX, POS[2], POS[3] + RandomY})
-
+            IssueMove({ unit }, { POS[1] + RandomX, POS[2], POS[3] + RandomY })
         end
-
     end
-
 end
 
 
@@ -1889,17 +1799,15 @@ GiveAssistOrder = function(aiPlatoon, WaveID, TargetType)
     local CurrentWave = WaveTable[WaveID]
     local UnitList = CurrentWave[1]
 
-    UnitList = ShuffleList(UnitList)  --ERROR: Unit Has Been Destroyed
+    UnitList = ShuffleList(UnitList) --ERROR: Unit Has Been Destroyed
     for i, unit in UnitList do
 
         if (unit:BeenDestroyed() == false) then
-            if(unit:GetUnitId() == TargetType) then
+            if (unit:GetUnitId() == TargetType) then
                 IssueGuard(aiPlatoon:GetPlatoonUnits(), UnitList[i])
             end
         end
     end
-
-
 end
 
 
@@ -1915,9 +1823,9 @@ GiveTransportOrder = function(aiPlatoon, Quantity, techlevel)
 
         local NewUnit = 0
         if (techlevel == "Tech1") then
-            NewUnit = createSurvivalUnit('ura0107', POS[1] + ((Random(-50,50) / 15)), POS[2], POS[3] + ((Random(-50,50) / 15)))
+            NewUnit = createSurvivalUnit('ura0107', POS[1] + ((Random(-50, 50) / 15)), POS[2], POS[3] + ((Random(-50, 50) / 15)))
         else
-            NewUnit = createSurvivalUnit('ura0104', POS[1] + ((Random(-50,50) / 15)), POS[2], POS[3] + ((Random(-50,50) / 15)))
+            NewUnit = createSurvivalUnit('ura0104', POS[1] + ((Random(-50, 50) / 15)), POS[2], POS[3] + ((Random(-50, 50) / 15)))
         end
 
         NewUnit:SetProductionPerSecondEnergy(2500)
@@ -1928,7 +1836,6 @@ GiveTransportOrder = function(aiPlatoon, Quantity, techlevel)
     end
 
     ScenarioFramework.AttachUnitsToTransports(aiPlatoon:GetPlatoonUnits(), UnitList)
-
 end
 
 
@@ -1937,7 +1844,6 @@ end
 UnloadTransport = function(aiPlatoon, marker)
 
     IssueTransportUnload(aiPlatoon:GetPlatoonUnits(), ScenarioUtils.MarkerToPosition(marker))
-
 end
 
 
@@ -1993,12 +1899,9 @@ BuildEnhancement = function(aiPlatoon, prebuild)
                     sACUnameID = 1
                     unit:SetCustomName(sACUnames[sACUnameID])
                     sACUnameID = sACUnameID + 1
-
                 end
-
             end
         end
-
     end
 end
 
@@ -2034,14 +1937,10 @@ IssueNameChange = function(aiPlatoon, UnitID)
                     SpecialNamesID = 1
                     unit:SetCustomName(SpecialNames[SpecialNamesID])
                     SpecialNamesID = SpecialNamesID + 1
-
                 end
-
-
             end
         end
     end
-
 end
 
 
@@ -2065,7 +1964,7 @@ IssueStrategicMissile = function(UnitList, TargetList) --Issue nuke launch
                 local POS = TargetList[target]:GetPosition()
                 --LOG("Position: " .. POS[1] .. ", " .. POS[2] .. ", " .. POS[3] .. ".")
                 unit:GiveNukeSiloAmmo(1)
-                IssueNuke({unit}, POS)
+                IssueNuke({ unit }, POS)
                 if (target < table.getn(TargetList)) then
                     target = target + 1
                 else
@@ -2098,9 +1997,9 @@ GiveWaveOrders = function(WaveOrderNumber, WaveID, SpawnPoint, Formation)
         return
     end
 
-    for i = 0, (table.getn(WaveInfo) -4 -3 / 3) do
+    for i = 0, (table.getn(WaveInfo) - 4 - 3 / 3) do
 
-        local r = 3*i + 4
+        local r = 3 * i + 4
 
         if (WaveInfo[r + 1] == "IssueAttackFormation") then
 
@@ -2141,7 +2040,6 @@ GiveWaveOrders = function(WaveOrderNumber, WaveID, SpawnPoint, Formation)
         else
         end
     end
-
 end
 
 
@@ -2169,11 +2067,11 @@ CreateWaveID = function(ID, SpawnPoint, Formation)
         return nil
     else
         for k = 0, ((table.getn(CurrentWave) - 2 - 1) / 2) do
-            local r = 2*k + 1
+            local r = 2 * k + 1
 
             for i = 1, CurrentWave[2 + r] do
                 --LOG("CreateWaveID Creating unit")
-                local NewUnit = createSurvivalUnit(CurrentWave[1 + r], POS[1] + (Random(-45,45) / 10), POS[2], POS[3] + (Random(40,45) / 15))
+                local NewUnit = createSurvivalUnit(CurrentWave[1 + r], POS[1] + (Random(-45, 45) / 10), POS[2], POS[3] + (Random(40, 45) / 15))
 
 
                 if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, NewUnit) then
@@ -2187,19 +2085,17 @@ CreateWaveID = function(ID, SpawnPoint, Formation)
                 NewUnit:EnableIntel('SonarStealthField')
                 table.insert(UnitList, NewUnit)
             end
-
         end
 
 
         local aiBrain = GetArmyBrain("ARMY_SURVIVAL_ENEMY")
-        local aiPlatoon = aiBrain:MakePlatoon('','')
+        local aiPlatoon = aiBrain:MakePlatoon('', '')
         aiBrain:AssignUnitsToPlatoon(aiPlatoon, UnitList, 'Attack', strFormation)
 
         CurrentWave[1] = UnitList
         WaveTable[ID] = CurrentWave
         return aiPlatoon
     end
-
 end
 
 CreateUnitGroup = function(Blueprint, SpawnPoint, Quantity) --Used to creating enemy units outside the wave table
@@ -2208,7 +2104,7 @@ CreateUnitGroup = function(Blueprint, SpawnPoint, Quantity) --Used to creating e
     strBluePrint = Blueprint
     local POS = GetMarker(SpawnPoint).position
     for i = 1, Quantity do
-        local NewUnit = createSurvivalUnit(Blueprint, POS[1] + ((Random(-110,110) / 10)), POS[2], POS[3] + ((Random(-50,50) / 15)))
+        local NewUnit = createSurvivalUnit(Blueprint, POS[1] + ((Random(-110, 110) / 10)), POS[2], POS[3] + ((Random(-50, 50) / 15)))
 
         if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, NewUnit) then
             NewUnit:SetFuelUseTime(9999)
@@ -2232,15 +2128,15 @@ end
 ForkThread(function()
     local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
 
-    local headerOptions = {color = "ffb4ffd4", duration = 11, location = "leftcenter", size = 35 }
-    local textOptions = {color = "ffb4ffd4", duration = 11, location = "leftcenter" }
+    local headerOptions = { color = "ffb4ffd4", duration = 11, location = "leftcenter", size = 35 }
+    local textOptions = { color = "ffb4ffd4", duration = 11, location = "leftcenter" }
 
-    textPrinter.print(string.rep( " ", 12 ) .. "Welcome to Survival Horde", headerOptions)
+    textPrinter.print(string.rep(" ", 12) .. "Welcome to Survival Horde", headerOptions)
     textPrinter.printBlankLine(textOptions)
-    textPrinter.print(string.rep( " ", 20 ) .. "Entropy Edition, version 15", textOptions)
+    textPrinter.print(string.rep(" ", 20) .. "Entropy Edition, version 15", textOptions)
     textPrinter.printBlankLine(textOptions)
     textPrinter.printBlankLine(textOptions)
-    textPrinter.print(string.rep( " ", 20 ) .. "You will need some extra AA in this version ;)", textOptions)
+    textPrinter.print(string.rep(" ", 20) .. "You will need some extra AA in this version ;)", textOptions)
 end)
 
 local function newAirwingSpawner()
@@ -2251,11 +2147,9 @@ end
 ForkThread(function()
     local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
     if ScenarioInfo.Options.opt_HordeAirWaves == 1 then
-        local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(
-            newAirwingSpawner(),
+        local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(newAirwingSpawner(),
             textPrinter,
-            TotalGameTime
-        )
+            TotalGameTime)
 
         airwings.init()
     end
@@ -2263,11 +2157,9 @@ end)
 
 local function setupAutoReclaim()
     if ScenarioInfo.Options.opt_HordeAutoReclaim > 0 then
-        ForkThread(
-            import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
+        ForkThread(import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
             ScenarioInfo.Options.opt_HordeAutoReclaim / 100,
-            ScenarioInfo.Options.opt_HordeAutoReclaim / 100
-        )
+            ScenarioInfo.Options.opt_HordeAutoReclaim / 100)
     end
 end
 
