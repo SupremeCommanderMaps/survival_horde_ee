@@ -1,6 +1,6 @@
 version = 5
 ScenarioInfo = {
-  map_version=15,
+  map_version=16,
   name = 'Survival Horde EE',
   description = [[Spino-ff of the popular Survival Horde map.
 

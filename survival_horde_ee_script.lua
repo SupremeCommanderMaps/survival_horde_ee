@@ -8,7 +8,7 @@ local SimObjects = import('/lua/SimObjectives.lua')
 
 local OccupiedArmies = {}
 
-
+local options = import('/maps/survival_horde_ee.v0016/src/Options.lua').newInstance(ScenarioInfo.Options)
 
 --NAME: Survival Horde
 
@@ -428,13 +428,10 @@ local CheckFocusArmy = function()
 end
 
 StartMission1 = function()
-
-    --LOG("StartMission1 - s")
-
     local HowManyMustSurvive = 0
     local Desc = ""
 
-    if (ScenarioInfo.Options.opt_defeat_conditions == 2) then
+    if options.allAcusNeedToSurvive() then
         HowManyMustSurvive = cdrUnitCount
         Desc = "Defend against incoming attacks. All ACUs must survive."
     else
@@ -469,42 +466,30 @@ end
 
 
 CreateWaves = function()
-    WaveTable = import('/maps/survival_horde_ee.v0016/src/WaveTable.lua').getWaveTable(EnableLane1,
+    WaveTable = import('/maps/survival_horde_ee.v0016/src/WaveTable.lua').getWaveTable(
+        EnableLane1,
         EnableLane2,
         EnableLane3,
         EnableLane4,
-        EnableLane5)
+        EnableLane5
+    )
 end
 
 CreateWaveTableOrders = function()
     local ValidGunshipTargetsA = table.copy(BaseRaidingTargets)
     ShuffleList(ValidGunshipTargetsA)
 
-    WaveOrders = import('/maps/survival_horde_ee.v0016/src/WaveOrders.lua').getWaveTable(WaveDelay,
+    WaveOrders = import('/maps/survival_horde_ee.v0016/src/WaveOrders.lua').getWaveTable(
+        WaveDelay, -- TODO: move to WaveOrders.lua
         ShuffleList,
-        ValidGunshipTargetsA)
-end
-
-function defaultOptions(scenarioOptions)
-    local defaults = {
-        opt_defeat_conditions = 1,
-        opt_HordeAirWaves = 1,
-        opt_HordeAutoReclaim = 0
-    }
-
-    for optionName, defaultValue in pairs(defaults) do
-        if (scenarioOptions[optionName] == nil) then
-            scenarioOptions[optionName] = defaultValue
-        end
-    end
-
-    return scenarioOptions
+        ValidGunshipTargetsA
+    )
 end
 
 local function createSurvivalUnit(blueprint, x, z, y)
     local unit = CreateUnitHPR(blueprint, "ARMY_SURVIVAL_ENEMY", x, z, y, 0, 0, 0)
 
-    if (ScenarioInfo.Options.opt_HordeAutoReclaim > 0) then
+    if (options.getAutoReclaimPercentage() > 0) then
         local bp = unit:GetBlueprint()
         bp.Wreckage = nil
     end
@@ -518,8 +503,6 @@ end
 
 function OnPopulate()
     ScenarioUtils.InitializeArmies()
-
-    ScenarioInfo.Options = defaultOptions(ScenarioInfo.Options)
 
     --    local survival = import('/maps/survival_horde_ee.v0016/src/Survival.lua').newInstance(
     --        ScenarioInfo,
@@ -1544,18 +1527,13 @@ Survival_Tick = function(self)
             cdrUnitListCurrent = cdrUnitListNew
 
 
-            --LOG("Commanders in water: " .. cdrUnderwater)
-            --LOG("Commanders raiding: ".. cdrRaiding)
-
-
-
             ---------------------------------------------------------------------------------- SPAWN UNIT WAVES---------------------------------------------------------------------------------------------------------------------------------------
-            -- LOG("GameTime " .. GameTime)
 
             for i = 1, table.getn(WaveOrders) do
                 local WaveInfo = WaveOrders[i]
+                local spawnTime = WaveInfo[3] - 80 + options.getSpawnDelay()
 
-                if (WaveInfo[3] == GameTime) then
+                if (GameTime == spawnTime) then
                     GiveWaveOrders(i, WaveInfo[1], WaveInfo[2], WaveInfo[4])
                 end
             end
@@ -2062,7 +2040,7 @@ end
 
 ForkThread(function()
     local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
-    if ScenarioInfo.Options.opt_HordeAirWaves == 1 then
+    if options.airWavesAreEnabled() then
         local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(
             newAirwingSpawner(),
             textPrinter,
@@ -2074,11 +2052,13 @@ ForkThread(function()
 end)
 
 local function setupAutoReclaim()
-    if ScenarioInfo.Options.opt_HordeAutoReclaim > 0 then
+    local percentage = options.getAutoReclaimPercentage()
+
+    if percentage > 0 then
         ForkThread(
             import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
-            ScenarioInfo.Options.opt_HordeAutoReclaim / 100,
-            ScenarioInfo.Options.opt_HordeAutoReclaim / 100
+            percentage / 100,
+            percentage / 100
         )
     end
 end
