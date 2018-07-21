@@ -126,28 +126,15 @@ local BaseRaidingTargets = {}
 local ValidTransportDrops = {}
 
 
-function ShuffleList(list) --Shuffles lists randomly
-
-
+function ShuffleList(list)
     local SpawnList = list
 
-
     for i = 1, table.getn(SpawnList) do
-
-        --local str1 = ''
-        --local str2 = ''
-
         local RandomIndex = Random(1, table.getn(SpawnList))
 
-
-        local str1 = SpawnList[i]
-        local str2 = SpawnList[RandomIndex]
-
-        SpawnList[i] = str2
-        SpawnList[RandomIndex] = str1
+        SpawnList[i] = SpawnList[RandomIndex]
+        SpawnList[RandomIndex] = SpawnList[i]
     end
-
-
 
     return SpawnList
 end
@@ -166,31 +153,24 @@ function ScenarioUtils.CommanderWarpDelay(cdrUnit, delay) --Silly way to disable
     local aiBrain = GetArmyBrain(army)
 
     if (aiBrain:GetFactionIndex() == 1) then
-
         cdrUnit:ShowBone(0, true)
         cdrUnit:HideBone('Right_Upgrade', true)
         cdrUnit:HideBone('Left_Upgrade', true)
         cdrUnit:HideBone('Back_Upgrade_B01', true)
         cdrUnit:SetOrientation({ 0, 1, 0, 0 }, true)
-
     elseif (aiBrain:GetFactionIndex() == 2) then
-
         cdrUnit:ShowBone(0, true)
         cdrUnit:HideBone('Back_Upgrade', true)
         cdrUnit:HideBone('Right_Upgrade', true)
         cdrUnit:HideBone('Left_Upgrade', true)
         cdrUnit:SetOrientation({ 0, 1, 0, 0 }, true)
-
     elseif (aiBrain:GetFactionIndex() == 3) then
-
         cdrUnit:ShowBone(0, true)
         cdrUnit:HideBone('Back_Upgrade', true)
         cdrUnit:HideBone('Right_Upgrade', true)
         cdrUnit:HideBone('Back_Upgrade', true)
         cdrUnit:SetOrientation({ 0, 1, 0, 0 }, true)
-
     elseif (aiBrain:GetFactionIndex() == 4) then
-
         cdrUnit:ShowBone(0, true)
         cdrUnit:HideBone('Back_Upgrade', true)
         cdrUnit:HideBone('Right_Upgrade', true)
@@ -2083,9 +2063,11 @@ end
 ForkThread(function()
     local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
     if ScenarioInfo.Options.opt_HordeAirWaves == 1 then
-        local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(newAirwingSpawner(),
+        local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(
+            newAirwingSpawner(),
             textPrinter,
-            TotalGameTime)
+            TotalGameTime
+        )
 
         airwings.init()
     end
@@ -2093,9 +2075,11 @@ end)
 
 local function setupAutoReclaim()
     if ScenarioInfo.Options.opt_HordeAutoReclaim > 0 then
-        ForkThread(import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
+        ForkThread(
+            import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
             ScenarioInfo.Options.opt_HordeAutoReclaim / 100,
-            ScenarioInfo.Options.opt_HordeAutoReclaim / 100)
+            ScenarioInfo.Options.opt_HordeAutoReclaim / 100
+        )
     end
 end
 
