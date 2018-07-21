@@ -1294,7 +1294,7 @@ Survival_Tick = function(self)
 
             for k, IdleUnit in UnitListBomber do
 
-                if (IdleUnit:IsIdleState() and IdleUnit:GetBlueprint() != "dra0202" ) then
+                if (IdleUnit:IsIdleState() and IdleUnit:GetBlueprint() ~= "dra0202" ) then
                     table.insert(IdleUnitListBomber, IdleUnit)
                 end
 
