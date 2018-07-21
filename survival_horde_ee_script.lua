@@ -233,8 +233,8 @@ function ScenarioUtils.CreateResources()
             200, -- LOD
             0, -- Duration (0 == does not expire)
             -1, -- army (-1 == not owned by any single army)
-            0 -- ???)
-
+            0 -- ???
+        )
 
         -- create the resource
         CreateResourceDeposit("Mass", 247.5 + 1.00, 22.48, 364.5 + 1.00, 1.00)
@@ -249,7 +249,8 @@ function ScenarioUtils.CreateResources()
             100, -- LOD
             0, -- Duration (0 == does not expire)
             -1, -- army (-1 == not owned by any single army)
-            0 -- ???)
+            0 -- ???
+        )
     end
 
     for i, tblData in pairs(markers) do
@@ -335,7 +336,8 @@ function ScenarioUtils.CreateResources()
                 lod, -- LOD
                 0, -- Duration (0 == does not expire)
                 -1, -- army (-1 == not owned by any single army)
-                0 -- ???)
+                0 -- ???
+            )
 
         elseif (spawnresource and tblData.BigMass) then
             local bp, albedo, sx, sz, lod
@@ -368,7 +370,8 @@ function ScenarioUtils.CreateResources()
                 lod, -- LOD
                 0, -- Duration (0 == does not expire)
                 -1, -- army (-1 == not owned by any single army)
-                0 -- ???)
+                0 -- ???
+            )
         end
     end
 end
