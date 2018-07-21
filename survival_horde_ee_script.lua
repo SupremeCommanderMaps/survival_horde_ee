@@ -859,6 +859,25 @@ StartMission2 = function()
 end
 
 
+local function IssueStrategicMissile(UnitList, TargetList) --Issue nuke launch
+    LOG("====================================================================== Launching nuke |||||||||||||")
+    local target = 1
+    IssueClearCommands(UnitList)
+    for k, unit in UnitList do
+        if (unit:BeenDestroyed() == false) then
+            if (unit:GetUnitId() == 'urs0304') then
+                local POS = TargetList[target]:GetPosition()
+                unit:GiveNukeSiloAmmo(1)
+                IssueNuke({ unit }, POS)
+                if (target < table.getn(TargetList)) then
+                    target = target + 1
+                else
+                    target = 1
+                end
+            end
+        end
+    end
+end
 
 
 
@@ -868,7 +887,8 @@ StartSecondaryMission1 = function()
 
     if (table.getn(UnitList) > 0) then
 
-        ScenarioInfo.M1S1 = Objectives.KillOrCapture('secondary',
+        ScenarioInfo.M1S1 = Objectives.KillOrCapture(
+            'secondary',
             'incomplete',
             "Destroy Missile Submarines",
             "Destroy Strategic Missile Submarines before they can build and launch a nuke. Nukes will launch at 35 minute mark.",
@@ -877,12 +897,11 @@ StartSecondaryMission1 = function()
                 NumRequired = table.getn(UnitList),
                 MarkUnits = false,
                 ShowProgress = true,
-            })
+            }
+        )
 
         ScenarioInfo.M1S1:AddResultCallback(function(result)
             if (result == false) then
-                --LOG("Issuing a nuclear launch. Beep boop.")
-                ----------------------------------------------------- NUKE LAUNCHING SCRIPT-------------------------------------------------------------------------------------------------------------------------------------------------------------
                 UnitList = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.NUKESUB, false, false)
                 local NukeTargetUnits = {}
                 local PotentialNukeTargetUnits = {}
@@ -909,12 +928,10 @@ StartSecondaryMission1 = function()
                     NukeTargetUnits = ShuffleList(NukeTargetUnits)
                     IssueStrategicMissile(UnitList, NukeTargetUnits)
                 end
-                ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             end
         end)
 
     else
-        --LOG("No nukesubs found, not running secondary objective")
         DontStartNukeObjective = 1
     end
 end
@@ -1097,7 +1114,7 @@ Survival_Tick = function(self)
                 ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').TAUNT30, nil, true) --Sera Taunt1 34:30 min mark
             end
 
-            if GameTime == 2100 then ---------------------------------------- Nukes launching at 35 min 2100
+            if GameTime == 2100 then
                 if (DontStartNukeObjective == 0) then
                     ScenarioInfo.M1S1:ManualResult(false)
                 end
@@ -1866,40 +1883,6 @@ IssueNameChange = function(aiPlatoon, UnitID)
         end
     end
 end
-
-
-
-
-
-
-
-
-
-
-IssueStrategicMissile = function(UnitList, TargetList) --Issue nuke launch
-
-    local target = 1
-    IssueClearCommands(UnitList)
-    for k, unit in UnitList do
-
-
-        if (unit:BeenDestroyed() == false) then
-            if (unit:GetUnitId() == 'urs0304') then
-                local POS = TargetList[target]:GetPosition()
-                --LOG("Position: " .. POS[1] .. ", " .. POS[2] .. ", " .. POS[3] .. ".")
-                unit:GiveNukeSiloAmmo(1)
-                IssueNuke({ unit }, POS)
-                if (target < table.getn(TargetList)) then
-                    target = target + 1
-                else
-                    target = 1
-                end
-            end
-        end
-    end
-end
-
-
 
 
 
