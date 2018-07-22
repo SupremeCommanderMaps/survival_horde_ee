@@ -8,6 +8,18 @@ single ACU to survive till the victory time is reached.
 
 ![image](https://user-images.githubusercontent.com/146040/43050248-d685e464-8e05-11e8-81d2-6e4ffc07af53.png)
 
+## Installation
+
+*FAF Map Vault*
+
+The easiest way to install the map is to get it via the [Forged Alliance Forever][FAF] map vault.
+
+*From a Friend*
+
+If the map vault does not work for you and a friend has the map, ask them to send you a copy
+of their `survival_horde_ee.v0016` in `Documents\My Games\Gas Powered Games\Supreme Commander Forged Alliance\Maps`.
+Then place that copy into the `Maps` directory on your computer.
+
 ## New in Entropy Edition
 
 ### Version 16
