@@ -213,7 +213,7 @@ function ScenarioUtils.CreateResources()
             200, -- LOD
             0, -- Duration (0 == does not expire)
             -1, -- army (-1 == not owned by any single army)
-            0 -- ???
+            0
         )
 
         -- create the resource
@@ -229,7 +229,7 @@ function ScenarioUtils.CreateResources()
             100, -- LOD
             0, -- Duration (0 == does not expire)
             -1, -- army (-1 == not owned by any single army)
-            0 -- ???
+            0
         )
     end
 
@@ -363,9 +363,6 @@ local function ShuffleListPartially(list, startingID, endingID, IgnoreList) --Sh
     local DoNothing = 0
 
     if (endingID > table.getn(SpawnList)) then
-        --LOG("ERROR: not valid range given to ShuffleListPartially.")
-        --LOG("table.getn(SpawnList) is " .. table.getn(SpawnList))
-        --LOG("endingID is " .. endingID)
         return SpawnList
     else
 
@@ -456,11 +453,7 @@ StartMission1 = function()
             ForkThread(OnPlayerDefeat)
         end
     end)
-
-    --LOG("StartMission1 - e")
 end
-
-
 
 
 
@@ -517,26 +510,7 @@ end
 function OnPopulate()
     ScenarioUtils.InitializeArmies()
 
-    --    local survival = import('/maps/survival_horde_ee.v0016/src/Survival.lua').newInstance(
-    --        ScenarioInfo,
-    --        CreateWaves,
-    --        CreateWaveTableOrders,
-    --        WaveTable,
-    --        EnableLane1,
-    --        EnableLane2,
-    --        EnableLane3,
-    --        EnableLane4,
-    --        EnableLane5,
-    --        OccupiedArmies,
-    --        BaseRaidingTargets,
-    --        ValidTransportDrops,
-    --        IgnoredLanesList,
-    --        cdrUnitCount,
-    --        cdrUnitList
-    --    )
-
     local init = function()
-
         local EnemyCommander = createSurvivalUnit('URL0001', 10, 13.5, -10)
         EnemyCommander:SetDoNotTarget(true)
         EnemyCommander:SetCanBeKilled(false)
