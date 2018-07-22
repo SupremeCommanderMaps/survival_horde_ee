@@ -6,7 +6,7 @@ A survival map for [Supreme Commander: Forged Alliance Forever][FAF].
 
 ### Version 16
 
-Under development
+Released on 2018-07-22
 
 * Added spawn delay option
 * Added health multiplier option
