@@ -2,6 +2,7 @@ local function defaultOptions(scenarioOptions)
     local optionDefaults = {
         opt_defeat_conditions = 1,
         opt_HordeSpawnDelay = 80,
+        opt_HordeHealthMultiplier = 1,
         opt_HordeAutoReclaim = 0,
         opt_HordeAirWaves = 1
     }
@@ -33,6 +34,10 @@ function newInstance(ScenarioInfoOptions)
 
     this.airWavesAreEnabled = function()
         return rawOptions.opt_HordeAirWaves == 1
+    end
+
+    this.getHealthMultiplier = function()
+        return rawOptions.opt_HordeHealthMultiplier
     end
 
     return this

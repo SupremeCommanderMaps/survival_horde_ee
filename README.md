@@ -9,6 +9,7 @@ A survival map for [Supreme Commander: Forged Alliance Forever][FAF].
 Under development
 
 * Added spawn delay option
+* Added health multiplier option
 * Wrecks for Cybran player units will no longer disappear when Auto Reclaim is turned on
 * Survival units now start with max veterancy
 

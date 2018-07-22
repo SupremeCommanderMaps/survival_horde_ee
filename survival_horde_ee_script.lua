@@ -479,7 +479,16 @@ CreateWaveTableOrders = function()
     )
 end
 
-local unitCreator = import('/maps/survival_horde_ee.v0016/lib/UnitCreator.lua').newUnitCreator()
+local unitCreator = import('/maps/survival_horde_ee.v0016/src/lib/UnitCreator.lua').newUnitCreator()
+
+if options.getHealthMultiplier() ~= 1 then
+    unitCreator.onUnitCreated(function(unit, unitInfo)
+        if unitInfo.isSurvivalSpawned then
+            unit:SetMaxHealth(unit:GetMaxHealth() * options.getHealthMultiplier())
+            unit:SetHealth(unit, unit:GetMaxHealth())
+        end
+    end)
+end
 
 local function createSurvivalUnit(blueprint, x, z, y)
     local unit = unitCreator.spawnSurvivalUnit({
@@ -489,12 +498,6 @@ local function createSurvivalUnit(blueprint, x, z, y)
         z = z,
         y = y
     })
-
-    if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, unit) then
-        unit:SetFuelUseTime(9999)
-    end
-
-    unit:SetVeterancy(5)
 
     return unit
 end
@@ -1993,7 +1996,17 @@ ForkThread(function()
     textPrinter.printBlankLine(textOptions)
     textPrinter.printBlankLine(textOptions)
     textPrinter.print(string.rep(" ", 20) .. "Enemies spawn in " .. options.getSpawnDelay() .. " seconds", textOptions)
-    textPrinter.print(string.rep(" ", 20) .. "Auto reclaim: " .. options.getAutoReclaimPercentage() .. "%", textOptions)
+    textPrinter.print(string.rep(" ", 20) .. "Enemy health: " .. (options.getHealthMultiplier() * 100) .. "%", textOptions)
+
+    textPrinter.print(
+        string.rep(" ", 20) .. "Auto reclaim: " ..
+            (
+            options.getAutoReclaimPercentage() == 0
+                and "off"
+                or (options.getAutoReclaimPercentage() .. "%")
+            ),
+        textOptions
+    )
 end)
 
 local function newAirwingSpawner()

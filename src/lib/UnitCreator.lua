@@ -32,9 +32,8 @@ function newUnitCreator()
 
         unit:SetVeterancy(5)
 
-        if unitInfo.baseHealth then
-            unit:SetMaxHealth(unitInfo.baseHealth)
-            unit:SetHealth(unit, unitInfo.baseHealth)
+        if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, unit) then
+            unit:SetFuelUseTime(9999)
         end
 
         runOnUnitCreated(unit, unitInfo)
