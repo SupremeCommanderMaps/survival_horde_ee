@@ -1,6 +1,12 @@
 # Survival Horde Entropy Edition
 
-A survival map for [Supreme Commander: Forged Alliance Forever][FAF].
+A survival map for [Supreme Commander: Forged Alliance Forever][FAF] that supports 1 to 4 players.
+
+Enemy units come from the top via 4 lanes, leading to the 4 player bases. When playing with
+fewer players, the unoccupied lanes will not receive any units. By default the goal is for a
+single ACU to survive till the victory time is reached.
+
+![image](https://user-images.githubusercontent.com/146040/43050248-d685e464-8e05-11e8-81d2-6e4ffc07af53.png)
 
 ## New in Entropy Edition
 
