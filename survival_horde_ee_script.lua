@@ -481,14 +481,6 @@ end
 
 local unitCreator = import('/maps/survival_horde_ee.v0016/lib/UnitCreator.lua').newUnitCreator()
 
-if (options.getAutoReclaimPercentage() > 0) then
-    unitCreator.onUnitCreated(function(unit, unitInfo)
-        if unitInfo.isSurvivalSpawned then
-            unit.CreateWreckage = function() end
-        end
-    end)
-end
-
 local function createSurvivalUnit(blueprint, x, z, y)
     local unit = unitCreator.spawnSurvivalUnit({
         blueprintName = blueprint,
@@ -2026,6 +2018,12 @@ local function setupAutoReclaim()
     local percentage = options.getAutoReclaimPercentage()
 
     if percentage > 0 then
+        unitCreator.onUnitCreated(function(unit, unitInfo)
+            if unitInfo.isSurvivalSpawned then
+                unit.CreateWreckage = function() end
+            end
+        end)
+
         ForkThread(
             import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
             percentage / 100,
