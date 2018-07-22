@@ -10,6 +10,7 @@ Under development
 
 * Added spawn delay option
 * Wrecks for Cybran player units will no longer disappear when Auto Reclaim is turned on
+* Survival units now start with max veterancy
 
 ### Version 15
 
