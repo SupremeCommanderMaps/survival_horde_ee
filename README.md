@@ -9,6 +9,7 @@ A survival map for [Supreme Commander: Forged Alliance Forever][FAF].
 Under development
 
 * Added spawn delay option
+* Wrecks for Cybran player units will no longer disappear when Auto Reclaim is turned on
 
 ### Version 15
 
@@ -32,3 +33,5 @@ Released on 2017-09-20
 ### Version 7
 
 * Added new air waves
+
+[FAF]: http://www.faforever.com/

@@ -486,17 +486,30 @@ CreateWaveTableOrders = function()
     )
 end
 
-local function createSurvivalUnit(blueprint, x, z, y)
-    local unit = CreateUnitHPR(blueprint, "ARMY_SURVIVAL_ENEMY", x, z, y, 0, 0, 0)
+local unitCreator = import('/maps/survival_horde_ee.v0016/lib/UnitCreator.lua').newUnitCreator()
 
-    if (options.getAutoReclaimPercentage() > 0) then
-        local bp = unit:GetBlueprint()
-        bp.Wreckage = nil
-    end
+if (options.getAutoReclaimPercentage() > 0) then
+    unitCreator.onUnitCreated(function(unit, unitInfo)
+        if unitInfo.isSurvivalSpawned then
+            unit.CreateWreckage = function() end
+        end
+    end)
+end
+
+local function createSurvivalUnit(blueprint, x, z, y)
+    local unit = unitCreator.spawnSurvivalUnit({
+        blueprintName = blueprint,
+        armyName = "ARMY_SURVIVAL_ENEMY",
+        x = x,
+        z = z,
+        y = y
+    })
 
     if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, unit) then
         unit:SetFuelUseTime(9999)
     end
+
+    unit:SetVeterancy(5)
 
     return unit
 end
