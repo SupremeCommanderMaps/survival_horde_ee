@@ -1,6 +1,6 @@
 version = 5
 ScenarioInfo = {
-  map_version=16,
+  map_version=17,
   name = 'Survival Horde EE',
   description = [[Spino-ff of the popular Survival Horde map.
 
@@ -9,7 +9,7 @@ Vastly outnumbered, you start preparing for the last stand.
 
 Works with 1-4 player (unoccupied lanes are disabled, resources are spawned according to players).
 
-Difficulty: Pretty hard.
+Difficulty: Pretty hard (though you can adjust it with lobby options)
 
 Survival Horde is made by Mikzau, EE changes by Entropy Wins.
 ]],

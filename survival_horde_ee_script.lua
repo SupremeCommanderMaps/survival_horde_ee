@@ -1992,7 +1992,7 @@ ForkThread(function()
     local textOptions = { color = "ff002288", duration = 13, location = "leftcenter" }
 
     textPrinter.print(string.rep(" ", 12) .. "Welcome to Survival Horde", headerOptions)
-    textPrinter.print(string.rep(" ", 34) .. "Entropy Edition, version 16", versionOptions)
+    textPrinter.print(string.rep(" ", 34) .. "Entropy Edition, version 17", versionOptions)
     textPrinter.printBlankLine(textOptions)
     textPrinter.printBlankLine(textOptions)
     textPrinter.print(string.rep(" ", 20) .. "Enemies spawn in " .. options.getSpawnDelay() .. " seconds", textOptions)
