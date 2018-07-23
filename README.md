@@ -22,6 +22,12 @@ Then place that copy into the `Maps` directory on your computer.
 
 ## New in Entropy Edition
 
+### Version 17
+
+Under development
+
+* Added extra values for health multiplier option
+
 ### Version 16
 
 Released on 2018-07-22
