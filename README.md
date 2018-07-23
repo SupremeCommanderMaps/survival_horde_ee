@@ -10,11 +10,11 @@ single ACU to survive till the victory time is reached.
 
 ## Installation
 
-*FAF Map Vault*
+**FAF Map Vault**
 
 The easiest way to install the map is to get it via the [Forged Alliance Forever][FAF] map vault.
 
-*From a Friend*
+**From a Friend**
 
 If the map vault does not work for you and a friend has the map, ask them to send you a copy
 of their `survival_horde_ee.v0016` in `Documents\My Games\Gas Powered Games\Supreme Commander Forged Alliance\Maps`.
