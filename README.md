@@ -6,7 +6,7 @@ Enemy units come from the top via 4 lanes, leading to the 4 player bases. When p
 fewer players, the unoccupied lanes will not receive any units. By default the goal is for a
 single ACU to survive till the victory time is reached.
 
-[![image](https://user-images.githubusercontent.com/146040/43050248-d685e464-8e05-11e8-81d2-6e4ffc07af53.png)](https://www.youtube.com/watch?v=o9RB0UWyzjI)
+[![image](https://user-images.githubusercontent.com/146040/43050248-d685e464-8e05-11e8-81d2-6e4ffc07af53.png)](https://youtu.be/o9RB0UWyzjI?t=9)
 
 ## Installation
 
