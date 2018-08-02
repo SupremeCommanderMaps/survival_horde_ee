@@ -24,7 +24,7 @@ Then place that copy into the `Maps` directory on your computer.
 
 ### Version 17
 
-Under development
+Released on 2018-08-02
 
 * Added extra values for the health multiplier option
 * Added extra values for the spawn delay option
