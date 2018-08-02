@@ -1864,39 +1864,14 @@ BroadcastMSG = function(MSG, Fade, TextColor)
 end
 
 
-
-ForkThread(function()
-    local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
-
-    local headerOptions = { color = "ff001155", duration = 13, location = "leftcenter", size = 35 }
-    local versionOptions = { color = "ff001155", duration = 13, location = "leftcenter" }
-    local textOptions = { color = "ff002288", duration = 13, location = "leftcenter" }
-
-    textPrinter.print(string.rep(" ", 12) .. "Welcome to Survival Horde", headerOptions)
-    textPrinter.print(string.rep(" ", 34) .. "Entropy Edition, version 17", versionOptions)
-    textPrinter.printBlankLine(textOptions)
-    textPrinter.printBlankLine(textOptions)
-    textPrinter.print(string.rep(" ", 20) .. "Enemies spawn in " .. options.getSpawnDelay() .. " seconds", textOptions)
-    textPrinter.print(string.rep(" ", 20) .. "Enemy health: " .. (options.getHealthMultiplier() * 100) .. "%", textOptions)
-
-    textPrinter.print(
-        string.rep(" ", 20) .. "Auto reclaim: " ..
-            (
-            options.getAutoReclaimPercentage() == 0
-                and "off"
-                or (options.getAutoReclaimPercentage() .. "%")
-            ),
-        textOptions
-    )
-end)
-
 local function newAirwingSpawner()
     local mapSizeX, mapSizeY = GetMapSize()
     return import('/maps/survival_horde_ee.v0016/src/lib/AirwingSpawner.lua').newInstance(mapSizeX, mapSizeY, "ARMY_SURVIVAL_ENEMY")
 end
 
+local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
+
 ForkThread(function()
-    local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
     if options.airWavesAreEnabled() then
         local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(
             newAirwingSpawner(),
@@ -1927,3 +1902,10 @@ local function setupAutoReclaim()
 end
 
 setupAutoReclaim()
+
+local welcomeMessages = import('/maps/survival_horde_ee.v0016/src/lib/WelcomeMessages.lua').newInstance(
+    textPrinter,
+    options
+)
+
+welcomeMessages.startDisplay()
