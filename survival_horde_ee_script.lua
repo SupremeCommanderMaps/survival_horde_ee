@@ -1601,32 +1601,12 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
 function GetMarker(MarkerName)
-
-
     return Scenario.MasterChain._MASTERCHAIN_.Markers[MarkerName] --Get markers by their name
 end
 
 
-
-
-
-
-
-
 GiveAttackOrderFormation = function(aiPlatoon, MarkerList)
-
-
     for i, marker in MarkerList do
         aiPlatoon:AggressiveMoveToLocation(ScenarioUtils.MarkerToPosition(marker))
     end
@@ -1635,40 +1615,27 @@ end
 
 
 GiveMoveOrderFormation = function(aiPlatoon, MarkerList)
-
-
     for i, marker in MarkerList do
         aiPlatoon:MoveToLocation(ScenarioUtils.MarkerToPosition(marker), false)
     end
 end
 
 
-
-
-
 GiveAttackOrder = function(aiPlatoon, MarkerList)
-
     for i, marker in MarkerList do
         IssueAggressiveMove((aiPlatoon:GetPlatoonUnits()), ScenarioUtils.MarkerToPosition(marker), 'GrowthFormation', 10)
     end
 end
 
 
-
-
-
 GiveMoveOrder = function(aiPlatoon, MarkerList) --Need this because platoon:MoveToLocation doesn't work without unit formations
 
     for k, unit in aiPlatoon:GetPlatoonUnits() do
-
         local RandomX = Random(-90, 90) / 10
         local RandomY = Random(-90, 90) / 10
 
-
         for i, marker in MarkerList do
-
             local POS = ScenarioUtils.MarkerToPosition(marker)
-
             IssueMove({ unit }, { POS[1] + RandomX, POS[2], POS[3] + RandomY })
         end
     end
@@ -1677,22 +1644,7 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 GiveAssistOrder = function(aiPlatoon, WaveID, TargetType)
-
     local CurrentWave = WaveTable[WaveID]
     local UnitList = CurrentWave[1]
 
@@ -1743,7 +1695,6 @@ end
 
 
 BuildEnhancement = function(aiPlatoon, prebuild)
-
     for k, unit in aiPlatoon:GetPlatoonUnits() do
         if (unit:BeenDestroyed() == false) then
             if (unit:GetUnitId() == 'url0301') then --Cybran sACU
@@ -1783,15 +1734,10 @@ IssueNameChange = function(aiPlatoon, UnitID)
     for k, unit in UnitList do
         if (unit:BeenDestroyed() == false) then
             if (unit:GetUnitId() == UnitID) then
-
-
                 if (SpecialNamesID <= table.getn(SpecialNames)) then
-
                     unit:SetCustomName(SpecialNames[SpecialNamesID])
                     SpecialNamesID = SpecialNamesID + 1
-
                 elseif (SpecialNamesID > table.getn(SpecialNames)) then
-
                     SpecialNamesID = 1
                     unit:SetCustomName(SpecialNames[SpecialNamesID])
                     SpecialNamesID = SpecialNamesID + 1
