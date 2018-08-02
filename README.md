@@ -26,7 +26,8 @@ Then place that copy into the `Maps` directory on your computer.
 
 Under development
 
-* Added extra values for health multiplier option
+* Added extra values for the health multiplier option
+* Added extra values for the spawn delay option
 
 ### Version 16
 
