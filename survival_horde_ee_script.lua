@@ -1035,10 +1035,6 @@ end
 local TotalGameTime = 2400
 
 Survival_Tick = function(self)
-
-    --LOG("Survival_Tick start")
-
-    --local DoOnce = 0
     local cdrUnitListCurrent = cdrUnitList
     local Time = ScenarioInfo.Options.StartTime
     local cdrUnderwater = 0
@@ -1170,25 +1166,16 @@ Survival_Tick = function(self)
 
 
             if (cdrRaiding > 0) then
-
-                --RandomRoutePicker = 1
                 RandomRoutePicker = Random(1, 2)
-
             elseif (cdrUnderwater > 0) then
-
                 RandomRoutePicker = Random(1, 2)
-
             elseif (cdrRaiding == 0) then
-
                 RandomRoutePicker = 2
             end
 
             if (RandomRoutePicker == 1) then
-
                 RandomBomberRoute = Random(1, table.getn(AllBomberRoutes))
-
             elseif (RandomRoutePicker == 2) then
-
                 RandomBomberRoute = Random(1, table.getn(AllBomberBaseRoutes))
             end
 
@@ -1233,16 +1220,11 @@ Survival_Tick = function(self)
             local IdleUnitListTransport = GetArmyBrain("ARMY_SURVIVAL_ENEMY"):GetListOfUnits(categories.TRANSPORTATION, true, false)
 
             for i, unit in IdleUnitListTransport do
-
-
                 local TransportPOS = unit:GetPosition()
                 local MarkerPOS = ScenarioUtils.MarkerToPosition('Survival_LandSpawn2') --------- Sends used transports to a kill box
                 local dist = VDist2(TransportPOS[1], TransportPOS[3], MarkerPOS[1], MarkerPOS[3])
 
-
                 if (dist <= 10) then
-
-
                     unit:Destroy()
                 end
             end
@@ -1255,9 +1237,7 @@ Survival_Tick = function(self)
 
 
             if (RandomTransportRoute == 1 and ValidTransportDrops[1] == "TransportDrop04") then
-
                 for i = 1, table.getn(TransportRoute1) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute1[i]), false)
                 end
 
@@ -1266,7 +1246,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 2 and ValidTransportDrops[1] == "TransportDrop04") then
 
                 for i = 1, table.getn(TransportRoute2) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute2[i]), false)
                 end
 
@@ -1275,7 +1254,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 1 and ValidTransportDrops[1] == "TransportDrop05") then
 
                 for i = 1, table.getn(TransportRoute3) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute3[i]), false)
                 end
 
@@ -1284,7 +1262,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 2 and ValidTransportDrops[1] == "TransportDrop05") then
 
                 for i = 1, table.getn(TransportRoute9) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute9[i]), false)
                 end
 
@@ -1293,7 +1270,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 1 and ValidTransportDrops[1] == "TransportDrop03") then
 
                 for i = 1, table.getn(TransportRoute7) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute7[i]), false)
                 end
 
@@ -1302,7 +1278,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 2 and ValidTransportDrops[1] == "TransportDrop03") then
 
                 for i = 1, table.getn(TransportRoute8) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute8[i]), false)
                 end
 
@@ -1311,7 +1286,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 1 and ValidTransportDrops[1] == "TransportDrop01") then
 
                 for i = 1, table.getn(TransportRoute4) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute4[i]), false)
                 end
 
@@ -1320,7 +1294,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 2 and ValidTransportDrops[1] == "TransportDrop01") then
 
                 for i = 1, table.getn(TransportRoute4) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute4[i]), false)
                 end
 
@@ -1329,7 +1302,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 1 and ValidTransportDrops[1] == "TransportDrop02") then
 
                 for i = 1, table.getn(TransportRoute5) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute5[i]), false)
                 end
 
@@ -1338,7 +1310,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 2 and ValidTransportDrops[1] == "TransportDrop02") then
 
                 for i = 1, table.getn(TransportRoute5) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute5[i]), false)
                 end
 
@@ -1347,7 +1318,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 1 and ValidTransportDrops[1] == "TransportDrop06") then
 
                 for i = 1, table.getn(TransportRoute6) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute6[i]), false)
                 end
 
@@ -1356,7 +1326,6 @@ Survival_Tick = function(self)
             elseif (RandomTransportRoute == 2 and ValidTransportDrops[1] == "TransportDrop06") then
 
                 for i = 1, table.getn(TransportRoute6) do
-
                     aiPlatoonTransport:MoveToLocation(ScenarioUtils.MarkerToPosition(TransportRoute6[i]), false)
                 end
 
@@ -1404,35 +1373,16 @@ Survival_Tick = function(self)
                             end
 
                             if (cdrDist > 150 and cdrPOS[2] >= 20) then --checks if commander is far away from the middle
-
                                 AtLeastOneACURaiding = 1
-                                --LOG("ACU is raiding.")
-
                             elseif (EnableLane1 == 0 and cdrDistLane1 < 45 and cdrPOS[2] >= 20) then
-
                                 AtLeastOneACURaiding = 1
-                                --LOG("ACU is raiding.")
-
                             elseif (EnableLane2 == 0 and cdrDistLane2 < 45 and cdrPOS[2] >= 20) then
-
                                 AtLeastOneACURaiding = 1
-                                --LOG("ACU is raiding.")
-
                             elseif (EnableLane3 == 0 and cdrDistLane3 < 60 and cdrPOS[2] >= 20) then
-
                                 AtLeastOneACURaiding = 1
-                                --LOG("ACU is raiding.")
-
                             elseif (EnableLane4 == 0 and cdrDistLane4 < 50 and cdrPOS[2] >= 20) then
-
                                 AtLeastOneACURaiding = 1
-                                --LOG("ACU is raiding.")
                             end
-                            --if (com:IsIdleState()) then
-                            --LOG("Commander is idling")
-                            --else
-                            --LOG("Commander is not idling")
-                            --end
                         end
                     end
 
@@ -1454,42 +1404,27 @@ Survival_Tick = function(self)
             end
 
             if (AtLeastOneACURaiding == 1) then
-
                 if (GameTime < 1800) then
-
                     cdrRaidingDelay = cdrRaidingDelay + 1
-                    --LOG("Raiding Delay is " .. cdrRaidingDelay)
-
                 else
-
                     cdrRaiding = 4
                     cdrRaidingDelay = 0
                 end
-
             else
-
                 cdrRaidingDelay = 0
-                --LOG("Raiding Delay was reset to 0.")
             end
 
             if (cdrRaidingDelay >= 150) then
-
                 cdrRaiding = 4
-                --LOG("Anti-Raiding waves spawned.")
             end
 
             if (HasT2Navy == 1) then
-
                 cdrUnderwater = cdrUnderwater + 1
             end
 
             if (HasT3Navy == 1) then
-
                 cdrUnderwater = cdrUnderwater + 1
             end
-
-
-            --LOG("Has Air Experimental is " .. HasAirExperimental)
 
             if (table.getn(cdrUnitListNew) < table.getn(cdrUnitListCurrent)) then
                 if (DeathDialogueNumber <= 5) then
