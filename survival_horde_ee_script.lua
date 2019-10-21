@@ -1,8 +1,5 @@
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Utilities = import('/lua/utilities.lua')
-local AIUtils = import('/lua/AI/aiutilities.lua')
-local ScenarioPlatoonAI = import('/lua/ScenarioPlatoonAI.lua')
 local Objectives = import('/lua/ScenarioFramework.lua').Objectives
 local SimObjects = import('/lua/SimObjectives.lua')
 
