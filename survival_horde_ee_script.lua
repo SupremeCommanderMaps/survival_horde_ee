@@ -102,7 +102,6 @@ local sACUnames = { "Jackson", "Anders", "Leo", "Max", "Adrik", "Alexei", "Iona"
 local sACUnameID = 1
 
 --OTHER
-local DoOnce = 0
 local DontStartNukeObjective = 0
 local GameHasEnded = 0
 local cdrUnitList = {}
