@@ -1,4 +1,4 @@
-newInstance = function(textPrinter, options)
+newInstance = function(textPrinter, options, mapVersion)
     local WELCOME_MESSAGE_DURATION = 13
 
     local function displayWeclome()
@@ -7,7 +7,7 @@ newInstance = function(textPrinter, options)
         local textOptions = { color = "ff002288", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter" }
 
         textPrinter.print(string.rep(" ", 12) .. "Welcome to Survival Horde", headerOptions)
-        textPrinter.print(string.rep(" ", 34) .. "Entropy Edition, version 17", versionOptions)
+        textPrinter.print(string.rep(" ", 34) .. "Entropy Edition, version " .. mapVersion, versionOptions)
         textPrinter.printBlankLine(textOptions)
         textPrinter.printBlankLine(textOptions)
         textPrinter.print(string.rep(" ", 20) .. "Enemies spawn in " .. options.getSpawnDelay() .. " seconds", textOptions)

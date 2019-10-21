@@ -17,14 +17,18 @@ The easiest way to install the map is to get it via the [Forged Alliance Forever
 **From a Friend**
 
 If the map vault does not work for you and a friend has the map, ask them to send you a copy
-of their `survival_horde_ee.v0016` in `Documents\My Games\Gas Powered Games\Supreme Commander Forged Alliance\Maps`.
+of their `survival_horde_ee.v0019` in `Documents\My Games\Gas Powered Games\Supreme Commander Forged Alliance\Maps`.
 Then place that copy into the `Maps` directory on your computer.
 
 ## New in Entropy Edition
 
-### Version 17
+### Version 2019-10-22
 
-Released on 2018-08-02
+* 
+
+### Version 18
+
+Released on 2018-08-03
 
 * Added extra values for the health multiplier option
 * Added extra values for the spawn delay option

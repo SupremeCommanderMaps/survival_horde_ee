@@ -8,7 +8,7 @@ local SimObjects = import('/lua/SimObjectives.lua')
 
 local OccupiedArmies = {}
 
-local options = import('/maps/survival_horde_ee.v0016/src/Options.lua').newInstance(ScenarioInfo.Options)
+local options = import('/maps/survival_horde_ee.v0019/src/Options.lua').newInstance(ScenarioInfo.Options)
 
 --NAME: Survival Horde
 
@@ -459,7 +459,7 @@ end
 
 
 CreateWaves = function()
-    WaveTable = import('/maps/survival_horde_ee.v0016/src/WaveTable.lua').getWaveTable(
+    WaveTable = import('/maps/survival_horde_ee.v0019/src/WaveTable.lua').getWaveTable(
         EnableLane1,
         EnableLane2,
         EnableLane3,
@@ -472,14 +472,14 @@ CreateWaveTableOrders = function()
     local ValidGunshipTargetsA = table.copy(BaseRaidingTargets)
     ShuffleList(ValidGunshipTargetsA)
 
-    WaveOrders = import('/maps/survival_horde_ee.v0016/src/WaveOrders.lua').getWaveTable(
+    WaveOrders = import('/maps/survival_horde_ee.v0019/src/WaveOrders.lua').getWaveTable(
         WaveDelay, -- TODO: move to WaveOrders.lua
         ShuffleList,
         ValidGunshipTargetsA
     )
 end
 
-local unitCreator = import('/maps/survival_horde_ee.v0016/src/lib/UnitCreator.lua').newUnitCreator()
+local unitCreator = import('/maps/survival_horde_ee.v0019/src/lib/UnitCreator.lua').newUnitCreator()
 
 if options.getHealthMultiplier() ~= 1 then
     unitCreator.onUnitCreated(function(unit, unitInfo)
@@ -1866,14 +1866,14 @@ end
 
 local function newAirwingSpawner()
     local mapSizeX, mapSizeY = GetMapSize()
-    return import('/maps/survival_horde_ee.v0016/src/lib/AirwingSpawner.lua').newInstance(mapSizeX, mapSizeY, "ARMY_SURVIVAL_ENEMY")
+    return import('/maps/survival_horde_ee.v0019/src/lib/AirwingSpawner.lua').newInstance(mapSizeX, mapSizeY, "ARMY_SURVIVAL_ENEMY")
 end
 
-local textPrinter = import('/maps/survival_horde_ee.v0016/src/lib/TextPrinter.lua').newInstance()
+local textPrinter = import('/maps/survival_horde_ee.v0019/src/lib/TextPrinter.lua').newInstance()
 
 ForkThread(function()
     if options.airWavesAreEnabled() then
-        local airwings = import('/maps/survival_horde_ee.v0016/src/Airwings.lua').newInstance(
+        local airwings = import('/maps/survival_horde_ee.v0019/src/Airwings.lua').newInstance(
             newAirwingSpawner(),
             textPrinter,
             TotalGameTime
@@ -1894,7 +1894,7 @@ local function setupAutoReclaim()
         end)
 
         ForkThread(
-            import('/maps/survival_horde_ee.v0016/src/lib/AutoReclaim.lua').AutoResourceThread,
+            import('/maps/survival_horde_ee.v0019/src/lib/AutoReclaim.lua').AutoResourceThread,
             percentage / 100,
             percentage / 100
         )
@@ -1903,9 +1903,10 @@ end
 
 setupAutoReclaim()
 
-local welcomeMessages = import('/maps/survival_horde_ee.v0016/src/lib/WelcomeMessages.lua').newInstance(
+local welcomeMessages = import('/maps/survival_horde_ee.v0019/src/WelcomeMessages.lua').newInstance(
     textPrinter,
-    options
+    options,
+    ScenarioInfo.map_version
 )
 
 welcomeMessages.startDisplay()
