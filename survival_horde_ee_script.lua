@@ -1054,6 +1054,7 @@ Survival_Tick = function(self)
         local PlatoonList = {}
         local cmdunit = nil
         local GameTime = math.floor(GetGameTimeSeconds())
+        local gameTimeMinusSpawnDelay = GameTime - options.getSpawnDelay() + 80
 
 
         if (OncePerTick < GameTime) then
@@ -1064,37 +1065,37 @@ Survival_Tick = function(self)
                 ScenarioFramework.Dialogue(import('/maps/X1CA_005/X1CA_005_strings.lua').X05_M01_011, nil, true)
             end
 
-            if GameTime == options.getSpawnDelay() + 10 then --"Enemy Units Converging to your position." --Around first waves
+            if gameTimeMinusSpawnDelay == 90 then --"Enemy Units Converging to your position." --Around first waves
                 ScenarioFramework.Dialogue(import('/maps/X1CA_002/X1CA_002_strings.lua').X02_M02_090, nil, true) --X02_M02_090
             end
 
-            if GameTime == 1170 then
+            if gameTimeMinusSpawnDelay == 1170 then
                 ScenarioFramework.Dialogue(import('/maps/X1CA_002/X1CA_002_strings.lua').TAUNT25, nil, true) --QAI taunt around 19:30 min mark
             end
 
-            if GameTime == 1320 then --Nuke Sub Mission 1320
+            if gameTimeMinusSpawnDelay == 1320 then --Nuke Sub Mission 1320
                 StartSecondaryMission1()
             end
 
-            if GameTime == 1800 then --Survive Until Recalled
+            if gameTimeMinusSpawnDelay == 1800 then --Survive Until Recalled
                 StartMission2()
             end
 
-            if GameTime == 1860 then
+            if gameTimeMinusSpawnDelay == 1860 then
                 ScenarioFramework.Dialogue(import('/maps/X1CA_005/X1CA_005_strings.lua').TAUNT11, nil, true) --QAI taunt aroun 31 min mark
             end
 
-            if GameTime == 2070 then --"Seraphim taunt1"
+            if gameTimeMinusSpawnDelay == 2070 then --"Seraphim taunt1"
                 ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').TAUNT30, nil, true) --Sera Taunt1 34:30 min mark
             end
 
-            if GameTime == 2100 then
+            if gameTimeMinusSpawnDelay == 2100 then
                 if (DontStartNukeObjective == 0) then
                     ScenarioInfo.M1S1:ManualResult(false)
                 end
             end
 
-            if GameTime == 2405 then --"Wait until extraction." --When the countdown begins
+            if gameTimeMinusSpawnDelay == 2405 then --"Wait until extraction." --When the countdown begins
                 ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_020, nil, true)
             end
 
