@@ -1040,19 +1040,11 @@ Survival_Tick = function(self)
 
     local OncePerTick = math.floor(GetGameTimeSeconds())
 
-
     if Time == nil then
         Time = 0
     end
 
-
-
     while (GameHasEnded == 0) do
-
-
-
-        local PlatoonList = {}
-        local cmdunit = nil
         local GameTime = math.floor(GetGameTimeSeconds())
         local gameTimeMinusSpawnDelay = GameTime - options.getSpawnDelay() + 80
 
@@ -1098,10 +1090,6 @@ Survival_Tick = function(self)
             if gameTimeMinusSpawnDelay == 2405 then --"Wait until extraction." --When the countdown begins
                 ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_020, nil, true)
             end
-
-            --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-            local aiBrain = GetArmyBrain("ARMY_SURVIVAL_ENEMY")
 
             ------------------------------------------------------- LAND UNIT IDLE PREVENTER!-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1619,7 +1607,7 @@ end
 
 
 GiveAttackOrder = function(aiPlatoon, MarkerList)
-    for i, marker in MarkerList do
+    for _, marker in MarkerList do
         IssueAggressiveMove((aiPlatoon:GetPlatoonUnits()), ScenarioUtils.MarkerToPosition(marker), 'GrowthFormation', 10)
     end
 end
@@ -1627,7 +1615,7 @@ end
 
 GiveMoveOrder = function(aiPlatoon, MarkerList) --Need this because platoon:MoveToLocation doesn't work without unit formations
 
-    for k, unit in aiPlatoon:GetPlatoonUnits() do
+    for _, unit in aiPlatoon:GetPlatoonUnits() do
         local RandomX = Random(-90, 90) / 10
         local RandomY = Random(-90, 90) / 10
 
