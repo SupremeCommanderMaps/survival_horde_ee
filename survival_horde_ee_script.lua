@@ -93,7 +93,7 @@ local BomberRoute11 = { "BomberPath48", "BomberPath49", "BomberPath50", "BomberP
 local BomberRoute12 = { "BomberPath54", "BomberPath53", "BomberPath52", "BomberPath51", "BomberPath50", "BomberPath49", "BomberPath48", "BomberPath56", "BomberPath55" }
 local BomberRoute13 = { "BomberPath59", "BomberPath60", "BomberPath61", "BomberPath62", "BomberPath63", "BomberPath57", "BomberPath58" }
 local BomberRoute14 = { "BomberPath62", "BomberPath61", "BomberPath60", "BomberPath59", "BomberPath58", "BomberPath57", "BomberPath63" }
-local AllBomberRoutes = { BomberRoute01, BomberRoute02, BomberRoute03, BomberRoute04, BomberRoute05, BomberRoute06, BomberRoute07, BomberRoute08.BomberRoute09, BomberRoute10, BomberRoute11, BomberRoute12, BomberRoute13, BomberRoute14 }
+local AllBomberRoutes = { BomberRoute01, BomberRoute02, BomberRoute03, BomberRoute04, BomberRoute05, BomberRoute06, BomberRoute07, BomberRoute08, BomberRoute09, BomberRoute10, BomberRoute11, BomberRoute12, BomberRoute13, BomberRoute14 }
 
 --NAMES
 local SpecialNames = { "Ripper", "Judas", "Hellbringer", "Trix", "Bulldog", "Doomer", "Punisher", "Ludvig", "Odyssey", "Little Furball", "Stompy", "Flamer", "Inferno", "The Barbarian", "Barbarossa" }
