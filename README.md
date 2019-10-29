@@ -22,9 +22,9 @@ Then place that copy into the `Maps` directory on your computer.
 
 ## New in Entropy Edition
 
-### Version 2019-10-22
+### Version 19
 
-Released on 2018-10-22
+Released on 2019-10-29
 
 * Increased spawn delay no longer causes the game to end prematurely
 
