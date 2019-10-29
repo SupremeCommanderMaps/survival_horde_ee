@@ -22,11 +22,17 @@ Then place that copy into the `Maps` directory on your computer.
 
 ## New in Entropy Edition
 
+### Version 20
+
+Released on 2019-10-29
+
+* Fixed timing of air waves when the spawn delay option is used
+
 ### Version 19
 
 Released on 2019-10-29
 
-* Increased spawn delay no longer causes the game to end prematurely
+* Fixed premature game end when the spawn delay option is used 
 
 ### Version 18
 

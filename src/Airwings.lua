@@ -27,7 +27,7 @@ newInstance = function(spawner, textPrinter, TotalGameTime)
         end)
     end
 
-    local function spawnStartBombers(delayInSeconds)
+    local function spawnStrategicBombers(delayInSeconds)
         ForkThread(function()
             WaitSeconds(delayInSeconds)
 
@@ -48,8 +48,8 @@ newInstance = function(spawner, textPrinter, TotalGameTime)
     return {
         init = function()
             spawnWelcomeShow()
-            spawnT2Bombers(1490)
-            spawnStartBombers(TotalGameTime - 140)
+            spawnT2Bombers(TotalGameTime - 910)
+            spawnStrategicBombers(TotalGameTime - 140)
         end
     }
 end

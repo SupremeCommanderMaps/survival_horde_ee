@@ -1028,7 +1028,9 @@ OnPlayerDefeat = function()
     end
 end
 
+local ORIGINAL_SPAWN_DELAY = 80
 local TotalGameTime = 2400
+local TotalGameTimeWithSpawnDelay = 2400 + options.getSpawnDelay() - ORIGINAL_SPAWN_DELAY
 
 Survival_Tick = function(self)
     local cdrUnitListCurrent = cdrUnitList
@@ -1046,7 +1048,7 @@ Survival_Tick = function(self)
 
     while (GameHasEnded == 0) do
         local GameTime = math.floor(GetGameTimeSeconds())
-        local gameTimeMinusSpawnDelay = GameTime - options.getSpawnDelay() + 80
+        local gameTimeMinusSpawnDelay = GameTime - options.getSpawnDelay() + ORIGINAL_SPAWN_DELAY
 
 
         if (OncePerTick < GameTime) then
@@ -1450,7 +1452,7 @@ Survival_Tick = function(self)
 
             for i = 1, table.getn(WaveOrders) do
                 local WaveInfo = WaveOrders[i]
-                local spawnTime = WaveInfo[3] - 80 + options.getSpawnDelay()
+                local spawnTime = WaveInfo[3] - ORIGINAL_SPAWN_DELAY + options.getSpawnDelay()
 
                 if (GameTime == spawnTime) then
                     GiveWaveOrders(i, WaveInfo[1], WaveInfo[2], WaveInfo[4])
@@ -1490,12 +1492,14 @@ Survival_Tick = function(self)
             local NumOfT3Scouts = math.floor(((20 + (EnableLane5 * 5)) * (cdrUnderwater + 4) * GameTime / (8 * (TotalGameTime - 150)) - 5))
             local UnitListT3Scouts = aiBrain:GetListOfUnits(categories.INTELLIGENCE - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH1 - categories.TECH2, false, false)
 
+            local gameTimeMinusSpawnDelay = GameTime - options.getSpawnDelay() + ORIGINAL_SPAWN_DELAY
+
             --Spawn Figthers
-            if (GameTime >= 240 and GameTime <= 1500 - (EnableLane5 * 180)) then
+            if (gameTimeMinusSpawnDelay >= 240 and gameTimeMinusSpawnDelay <= 1500 - (EnableLane5 * 180)) then
                 if (table.getn(UnitListInterceptors) <= math.floor(NumOfInterceptors * 2 / 3)) then
                     CreateUnitGroup('ura0102', (ShuffleList(AllEnemySpawns))[1], NumOfInterceptors - table.getn(UnitListInterceptors))
                 end
-            elseif (GameTime > 1500 - (EnableLane5 * 180)) then
+            elseif (gameTimeMinusSpawnDelay > 1500 - (EnableLane5 * 180)) then
                 if (table.getn(UnitListASF) <= math.floor(NumOfASF * 2 / 3)) then
                     CreateUnitGroup('ura0303', (ShuffleList(AllEnemySpawns))[1], NumOfASF - table.getn(UnitListASF))
                 end
@@ -1503,11 +1507,11 @@ Survival_Tick = function(self)
 
 
             --Spawn Bombers
-            if (GameTime >= 240 and GameTime <= 900) then
+            if (gameTimeMinusSpawnDelay >= 240 and gameTimeMinusSpawnDelay <= 900) then
                 if (table.getn(UnitListT1Bombers) <= math.floor(NumOfT1Bombers * 1 / 2)) then
                     CreateUnitGroup('ura0103', (ShuffleList(AllEnemySpawns))[1], NumOfT1Bombers - table.getn(UnitListT1Bombers))
                 end
-            elseif (GameTime >= 1680 - (EnableLane5 * 180)) then
+            elseif (gameTimeMinusSpawnDelay >= 1680 - (EnableLane5 * 180)) then
                 if (table.getn(UnitListT3Bombers) <= math.floor(NumOfT3Bombers * 1 / 2)) then
                     CreateUnitGroup('ura0304', (ShuffleList(AllEnemySpawns))[1], NumOfT3Bombers - table.getn(UnitListT3Bombers))
                 end
@@ -1515,15 +1519,15 @@ Survival_Tick = function(self)
 
 
             --Spawn Gunships
-            if (GameTime <= 960) then
+            if (gameTimeMinusSpawnDelay <= 960) then
                 if (table.getn(UnitListT1Gunships) == 0 and NumOfT1Gunships > 0) then
                     CreateUnitGroup('xra0105', (ShuffleList(AllEnemySpawns))[1], NumOfT1Gunships)
                 end
-            elseif (GameTime > 960 and GameTime <= 1740) then
+            elseif (gameTimeMinusSpawnDelay > 960 and gameTimeMinusSpawnDelay <= 1740) then
                 if (table.getn(UnitListT2Gunships) == 0 and NumOfT2Gunships > 0) then
                     CreateUnitGroup('ura0203', (ShuffleList(AllEnemySpawns))[1], NumOfT2Gunships)
                 end
-            elseif (GameTime > 1740) then
+            elseif (gameTimeMinusSpawnDelay > 1740) then
                 if (table.getn(UnitListT3Gunships) == 0 and NumOfT3Gunships > 0) then
                     CreateUnitGroup('xra0305', (ShuffleList(AllEnemySpawns))[1], NumOfT3Gunships)
                 end
@@ -1531,7 +1535,7 @@ Survival_Tick = function(self)
 
 
             --Spawn Torpedo Bombers
-            if (GameTime >= 780) then
+            if (gameTimeMinusSpawnDelay >= 780) then
                 if (table.getn(UnitListT3Bombers) <= math.floor(NumOfT3Bombers * 2 / 3)) then
                     CreateUnitGroup('ura0204', (ShuffleList(AllEnemySpawns))[1], NumOfTorpedoBombers - table.getn(UnitListTorpedoBombers))
                 end
@@ -1539,11 +1543,11 @@ Survival_Tick = function(self)
 
 
             --Spawn Scouts
-            if (GameTime >= 180 and GameTime <= 1380 - (EnableLane5 * 180)) then
+            if (gameTimeMinusSpawnDelay >= 180 and gameTimeMinusSpawnDelay <= 1380 - (EnableLane5 * 180)) then
                 if (table.getn(UnitListT1Scouts) < NumOfT1Scouts) then
                     CreateUnitGroup('ura0101', (ShuffleList(AllEnemySpawns))[1], 1)
                 end
-            elseif (GameTime > 1380 - (EnableLane5 * 180)) then
+            elseif (gameTimeMinusSpawnDelay > 1380 - (EnableLane5 * 180)) then
                 if (table.getn(UnitListT3Scouts) < NumOfT3Scouts) then
                     CreateUnitGroup('ura0302', (ShuffleList(AllEnemySpawns))[1], 1)
                 end
@@ -1553,24 +1557,24 @@ Survival_Tick = function(self)
 
 
             ----------------------------------------------------------------------------------- GAME ENDING COUNTDOWN--------------------------------------------------------------------
-            if (GameHasEnded == 0 and math.floor(TotalGameTime - GameTime) == 10) then
+            if (GameHasEnded == 0 and math.floor(TotalGameTimeWithSpawnDelay - GameTime) == 10) then
                 ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_250, nil, true) --"Almost there..."
             end
 
 
-            if (GameHasEnded == 0 and math.floor(TotalGameTime - GameTime) == 3) then
+            if (GameHasEnded == 0 and math.floor(TotalGameTimeWithSpawnDelay - GameTime) == 3) then
                 BroadcastMSG("[Teleporting in 3...]", 0)
             end
 
-            if (GameHasEnded == 0 and math.floor(TotalGameTime - GameTime) == 2) then
+            if (GameHasEnded == 0 and math.floor(TotalGameTimeWithSpawnDelay - GameTime) == 2) then
                 BroadcastMSG("[2...]", 0)
             end
 
-            if (GameHasEnded == 0 and math.floor(TotalGameTime - GameTime) == 1) then
+            if (GameHasEnded == 0 and math.floor(TotalGameTimeWithSpawnDelay - GameTime) == 1) then
                 BroadcastMSG("[1...]", 0)
             end
 
-            if (GameHasEnded == 0 and math.floor(TotalGameTime - GameTime) == 0) then
+            if (GameHasEnded == 0 and math.floor(TotalGameTimeWithSpawnDelay - GameTime) == 0) then
                 BroadcastMSG("", 0)
             end
 
@@ -1861,7 +1865,7 @@ ForkThread(function()
         local airwings = import('/maps/survival_horde_ee.v0020/src/Airwings.lua').newInstance(
             newAirwingSpawner(),
             textPrinter,
-            TotalGameTime
+            TotalGameTimeWithSpawnDelay
         )
 
         airwings.init()

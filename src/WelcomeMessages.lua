@@ -1,5 +1,5 @@
 newInstance = function(textPrinter, options, mapVersion)
-    local WELCOME_MESSAGE_DURATION = 13
+    local WELCOME_MESSAGE_DURATION = 22
 
     local function displayWeclome()
         local headerOptions = { color = "ff001155", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter", size = 35 }
