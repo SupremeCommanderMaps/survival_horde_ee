@@ -1,6 +1,6 @@
 version = 3
 ScenarioInfo = {
-  map_version=20,
+  map_version=21,
   name = 'Survival Horde EE',
   description = [[Spino-ff of the popular Survival Horde map.
 
@@ -17,9 +17,9 @@ Survival Horde is made by Mikzau, EE changes by Entropy Wins.
   starts = true,
   preview = '',
   size = {512, 512},
-  map = '/maps/survival_horde_ee.v0020/survival_horde_ee.scmap',
-  save = '/maps/survival_horde_ee.v0020/survival_horde_ee_save.lua',
-  script = '/maps/survival_horde_ee.v0020/survival_horde_ee_script.lua',
+  map = '/maps/survival_horde_ee.v0021/survival_horde_ee.scmap',
+  save = '/maps/survival_horde_ee.v0021/survival_horde_ee_save.lua',
+  script = '/maps/survival_horde_ee.v0021/survival_horde_ee_script.lua',
   norushradius = 80,
   Configurations = {
     ['standard'] = {
