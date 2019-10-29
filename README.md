@@ -27,6 +27,7 @@ Then place that copy into the `Maps` directory on your computer.
 Released on 2019-10-29
 
 * Fixed timing of air waves when the spawn delay option is used
+* All survival air units are now affected by the HP option 
 
 ### Version 19
 

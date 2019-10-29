@@ -1891,8 +1891,6 @@ local function newAirwingSpawner()
     )
 end
 
-
-
 ForkThread(function()
     if options.airWavesAreEnabled() then
         local airwings = import('/maps/survival_horde_ee.v0020/src/Airwings.lua').newInstance(

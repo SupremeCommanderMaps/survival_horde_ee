@@ -2,9 +2,9 @@ newInstance = function(textPrinter, options, mapVersion)
     local WELCOME_MESSAGE_DURATION = 25
 
     local function displayWeclome()
-        local headerOptions = { color = "ff5599ff", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter", size = 35 }
-        local versionOptions = { color = "ff5599ff", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter" }
-        local textOptions = { color = "ff3377cc", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter" }
+        local headerOptions = { color = "ff003322", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter", size = 35 }
+        local versionOptions = { color = "ff003322", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter" }
+        local textOptions = { color = "ff004433", duration = WELCOME_MESSAGE_DURATION, location = "leftcenter" }
 
         textPrinter.print(string.rep(" ", 12) .. "Welcome to Survival Horde", headerOptions)
         textPrinter.print(string.rep(" ", 34) .. "Entropy Edition, version " .. mapVersion, versionOptions)
