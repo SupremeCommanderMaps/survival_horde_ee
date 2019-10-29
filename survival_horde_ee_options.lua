@@ -99,7 +99,7 @@ options =
 	},
 	{
 		default = 1,
-		label = "Enable air waves",
+		label = "Extra air waves",
 		help = "Enable big waves of enemy air units (Entropy Edition addition)",
 		key = 'opt_HordeAirWaves',
 		pref = 'opt_HordeAirWaves',
