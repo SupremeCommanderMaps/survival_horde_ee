@@ -1,4 +1,4 @@
-version = 5
+version = 3
 ScenarioInfo = {
   map_version=19,
   name = 'Survival Horde EE',
