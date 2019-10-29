@@ -1492,8 +1492,6 @@ Survival_Tick = function(self)
             local NumOfT3Scouts = math.floor(((20 + (EnableLane5 * 5)) * (cdrUnderwater + 4) * GameTime / (8 * (TotalGameTime - 150)) - 5))
             local UnitListT3Scouts = aiBrain:GetListOfUnits(categories.INTELLIGENCE - categories.LAND - categories.NAVAL - categories.STRUCTURE - categories.EXPERIMENTAL - categories.TECH1 - categories.TECH2, false, false)
 
-            local gameTimeMinusSpawnDelay = GameTime - options.getSpawnDelay() + ORIGINAL_SPAWN_DELAY
-
             --Spawn Figthers
             if (gameTimeMinusSpawnDelay >= 240 and gameTimeMinusSpawnDelay <= 1500 - (EnableLane5 * 180)) then
                 if (table.getn(UnitListInterceptors) <= math.floor(NumOfInterceptors * 2 / 3)) then
@@ -1825,7 +1823,8 @@ CreateWaveID = function(ID, SpawnPoint, Formation)
     end
 end
 
-CreateUnitGroup = function(Blueprint, SpawnPoint, Quantity) --Used to creating enemy units outside the wave table
+-- Used to creating enemy units outside the wave table
+CreateUnitGroup = function(Blueprint, SpawnPoint, Quantity)
 
     local strBluePrint = ''
     strBluePrint = Blueprint
@@ -1852,26 +1851,6 @@ BroadcastMSG = function(MSG, Fade, TextColor)
     PrintText(MSG, 20, TextColor, Fade, 'center')
 end
 
-
-local function newAirwingSpawner()
-    local mapSizeX, mapSizeY = GetMapSize()
-    return import('/maps/survival_horde_ee.v0020/src/lib/AirwingSpawner.lua').newInstance(mapSizeX, mapSizeY, "ARMY_SURVIVAL_ENEMY")
-end
-
-local textPrinter = import('/maps/survival_horde_ee.v0020/src/lib/TextPrinter.lua').newInstance()
-
-ForkThread(function()
-    if options.airWavesAreEnabled() then
-        local airwings = import('/maps/survival_horde_ee.v0020/src/Airwings.lua').newInstance(
-            newAirwingSpawner(),
-            textPrinter,
-            TotalGameTimeWithSpawnDelay
-        )
-
-        airwings.init()
-    end
-end)
-
 local function setupAutoReclaim()
     local percentage = options.getAutoReclaimPercentage()
 
@@ -1892,6 +1871,8 @@ end
 
 setupAutoReclaim()
 
+local textPrinter = import('/maps/survival_horde_ee.v0020/src/lib/TextPrinter.lua').newInstance()
+
 local welcomeMessages = import('/maps/survival_horde_ee.v0020/src/WelcomeMessages.lua').newInstance(
     textPrinter,
     options,
@@ -1899,3 +1880,27 @@ local welcomeMessages = import('/maps/survival_horde_ee.v0020/src/WelcomeMessage
 )
 
 welcomeMessages.startDisplay()
+
+local function newAirwingSpawner()
+    local mapSizeX, mapSizeY = GetMapSize()
+    return import('/maps/survival_horde_ee.v0020/src/lib/AirwingSpawner.lua').newInstance(
+        mapSizeX,
+        mapSizeY,
+        "ARMY_SURVIVAL_ENEMY",
+        unitCreator
+    )
+end
+
+
+
+ForkThread(function()
+    if options.airWavesAreEnabled() then
+        local airwings = import('/maps/survival_horde_ee.v0020/src/Airwings.lua').newInstance(
+            newAirwingSpawner(),
+            textPrinter,
+            TotalGameTimeWithSpawnDelay
+        )
+
+        airwings.init()
+    end
+end)

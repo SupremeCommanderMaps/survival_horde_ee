@@ -1,4 +1,4 @@
-newInstance = function(mapSizeX, mapSizeY, armyName)
+newInstance = function(mapSizeX, mapSizeY, armyName, unitCreator)
     local function newUnitSpawner(blueprintName, isAgressive)
         local spawnEffect = function(unit)
             unit:PlayUnitSound('TeleportStart')
@@ -35,15 +35,13 @@ newInstance = function(mapSizeX, mapSizeY, armyName)
             spawn = function(x, y)
                 local yawInRadians = 0
 
-                local unit = CreateUnitHPR(
-                    blueprintName,
-                    armyName,
-                    x,
-                    25.9844,
-                    y,
-                    0,
-                    yawInRadians or 0,
-                    0
+                local unit = unitCreator.spawnSurvivalUnit(
+                    {
+                        blueprintName = blueprintName,
+                        armyName = armyName,
+                        x = x,
+                        y = y
+                    }
                 )
 
                 unit:SetSpeedMult(0.5)
@@ -83,13 +81,13 @@ newInstance = function(mapSizeX, mapSizeY, armyName)
 
     local function newWingRowSpawner(unitSpanwer)
         return {
-            spawnWings = function(options)
+            spawnWings = function(opts)
                 local options = {
-                    x = options.x or mapSizeX / 2,
-                    y = options.y or -10,
-                    wingRadius = options.wingRadius or 5,
-                    formationRadius = options.formationRadius or mapSizeY / ( 10 * ( options.wingRadius or 5 ) ),
-                    sparseness = options.sparseness or 1
+                    x = opts.x or mapSizeX / 2,
+                    y = opts.y or -10,
+                    wingRadius = opts.wingRadius or 5,
+                    formationRadius = opts.formationRadius or mapSizeY / ( 10 * ( opts.wingRadius or 5 ) ),
+                    sparseness = opts.sparseness or 1
                 }
 
                 local wingSpawner = newWingSpawner(unitSpanwer, options.wingRadius)
