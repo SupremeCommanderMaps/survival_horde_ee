@@ -35,12 +35,13 @@ newInstance = function(mapSizeX, mapSizeY, armyName, unitCreator)
             spawn = function(x, y)
                 local yawInRadians = 0
 
-                local unit = unitCreator.spawnSurvivalUnit(
+                local unit = unitCreator.create(
                     {
                         blueprintName = blueprintName,
                         armyName = armyName,
                         x = x,
-                        y = y
+                        y = y,
+                        isSurvivalSpawned = true
                     }
                 )
 

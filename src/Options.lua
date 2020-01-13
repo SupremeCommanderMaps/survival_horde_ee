@@ -3,6 +3,7 @@ local function defaultOptions(scenarioOptions)
         opt_defeat_conditions = 1,
         opt_HordeSpawnDelay = 80,
         opt_HordeHealthMultiplier = 1,
+        opt_HordeDamageMultiplier = 1,
         opt_HordeAutoReclaim = 0,
         opt_HordeAirWaves = 1
     }
@@ -38,6 +39,10 @@ function newInstance(ScenarioInfoOptions)
 
     this.getHealthMultiplier = function()
         return rawOptions.opt_HordeHealthMultiplier
+    end
+
+    this.getDamageMultiplier = function()
+        return rawOptions.opt_HordeDamageMultiplier
     end
 
     return this

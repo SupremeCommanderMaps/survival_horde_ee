@@ -22,6 +22,12 @@ Then place that copy into the `Maps` directory on your computer.
 
 ## New in Entropy Edition
 
+### Version 21
+
+Released on 2020-01-
+
+* Added damage multiplier option
+
 ### Version 20
 
 Released on 2019-10-29

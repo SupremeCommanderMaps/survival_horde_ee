@@ -5,7 +5,15 @@ local SimObjects = import('/lua/SimObjectives.lua')
 
 local OccupiedArmies = {}
 
-local options = import('/maps/survival_horde_ee.v0021/src/Options.lua').newInstance(ScenarioInfo.Options)
+local function localImport(fileName)
+	return import('/maps/survival_horde_ee.v0021/src/' .. fileName)
+end
+
+local function entropyLibImport(fileName)
+	return import('/maps/survival_horde_ee.v0021/vendor/EntropyLib/src/' .. fileName)
+end
+
+local options = localImport('Options.lua').newInstance(ScenarioInfo.Options)
 
 --NAME: Survival Horde
 
@@ -455,7 +463,7 @@ end
 
 
 CreateWaves = function()
-    WaveTable = import('/maps/survival_horde_ee.v0021/src/WaveTable.lua').getWaveTable(
+    WaveTable = localImport('WaveTable.lua').getWaveTable(
         EnableLane1,
         EnableLane2,
         EnableLane3,
@@ -468,38 +476,63 @@ CreateWaveTableOrders = function()
     local ValidGunshipTargetsA = table.copy(BaseRaidingTargets)
     ShuffleList(ValidGunshipTargetsA)
 
-    WaveOrders = import('/maps/survival_horde_ee.v0021/src/WaveOrders.lua').getWaveTable(
+    WaveOrders = localImport('WaveOrders.lua').getWaveTable(
         WaveDelay, -- TODO: move to WaveOrders.lua
         ShuffleList,
         ValidGunshipTargetsA
     )
 end
 
-local unitCreator = import('/maps/survival_horde_ee.v0021/src/lib/UnitCreator.lua').newUnitCreator()
+local unitCreator = entropyLibImport('UnitCreator.lua').newUnitCreator()
 
-if options.getHealthMultiplier() ~= 1 then
-    unitCreator.onUnitCreated(function(unit, unitInfo)
-        if unitInfo.isSurvivalSpawned then
-            unit:SetMaxHealth(unit:GetMaxHealth() * options.getHealthMultiplier())
-            unit:SetHealth(unit, unit:GetMaxHealth())
-        end
-    end)
+local function setupHealthMultiplier()
+    if options.getHealthMultiplier() ~= 1 then
+        unitCreator.onUnitCreated(function(unit, unitInfo)
+            if unitInfo.isSurvivalSpawned then
+                unit:SetVeterancy(5)
+                unit:SetMaxHealth(unit:GetMaxHealth() * options.getHealthMultiplier())
+                unit:SetHealth(unit, unit:GetMaxHealth())
+            end
+        end)
+    end
+end
+
+local function setupDamageMultiplier()
+	local multiplier = options.getDamageMultiplier()
+
+	if multiplier ~= 1 then
+	    local buffUnitDamage = entropyLibImport('UnitBuff.lua').buffDamage
+
+		unitCreator.onUnitCreated(function(unit, unitInfo)
+			if unitInfo.isSurvivalSpawned then
+                buffUnitDamage(unit, multiplier)
+			end
+		end)
+	end
 end
 
 local function createSurvivalUnit(blueprint, x, z, y)
-    local unit = unitCreator.spawnSurvivalUnit({
+    local unit = unitCreator.create({
         blueprintName = blueprint,
         armyName = "ARMY_SURVIVAL_ENEMY",
         x = x,
         z = z,
-        y = y
+        y = y,
+        isSurvivalSpawned = true
     })
+
+    if EntityCategoryContains(categories.AIR - categories.EXPERIMENTAL, unit) then
+        unit:SetFuelUseTime(9999)
+    end
 
     return unit
 end
 
 function OnPopulate()
     ScenarioUtils.InitializeArmies()
+
+    setupHealthMultiplier()
+    setupDamageMultiplier()
 
     local init = function()
         local EnemyCommander = createSurvivalUnit('URL0001', 10, 13.5, -10)
@@ -1862,7 +1895,7 @@ local function setupAutoReclaim()
         end)
 
         ForkThread(
-            import('/maps/survival_horde_ee.v0021/src/lib/AutoReclaim.lua').AutoResourceThread,
+            entropyLibImport('AutoReclaim.lua').AutoResourceThread,
             percentage / 100,
             percentage / 100
         )
@@ -1871,10 +1904,11 @@ end
 
 setupAutoReclaim()
 
-local textPrinter = import('/maps/survival_horde_ee.v0021/src/lib/TextPrinter.lua').newInstance()
+local textPrinter = entropyLibImport('TextPrinter.lua').newInstance()
 
-local welcomeMessages = import('/maps/survival_horde_ee.v0021/src/WelcomeMessages.lua').newInstance(
+local welcomeMessages = localImport('WelcomeMessages.lua').newInstance(
     textPrinter,
+    entropyLibImport('Formatter.lua'),
     options,
     ScenarioInfo.map_version
 )
@@ -1883,7 +1917,7 @@ welcomeMessages.startDisplay()
 
 local function newAirwingSpawner()
     local mapSizeX, mapSizeY = GetMapSize()
-    return import('/maps/survival_horde_ee.v0021/src/lib/AirwingSpawner.lua').newInstance(
+    return localImport('AirwingSpawner.lua').newInstance(
         mapSizeX,
         mapSizeY,
         "ARMY_SURVIVAL_ENEMY",
@@ -1893,7 +1927,7 @@ end
 
 ForkThread(function()
     if options.airWavesAreEnabled() then
-        local airwings = import('/maps/survival_horde_ee.v0021/src/Airwings.lua').newInstance(
+        local airwings = localImport('Airwings.lua').newInstance(
             newAirwingSpawner(),
             textPrinter,
             TotalGameTimeWithSpawnDelay
