@@ -11,7 +11,7 @@ Works with 1-4 player (unoccupied lanes are disabled, resources are spawned acco
 
 Difficulty: Pretty hard (though you can adjust it with lobby options)
 
-Survival Horde is made by Mikzau, EE changes by Entropy Wins.
+Survival Horde was created by Mikzau. EE version changes by Entropy Wins.
 ]],
   type = 'skirmish',
   starts = true,

@@ -24,7 +24,7 @@ Then place that copy into the `Maps` directory on your computer.
 
 ### Version 21
 
-Released on 2020-01-
+Released on 2020-01-13
 
 * Added damage multiplier option
 
